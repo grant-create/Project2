@@ -22,11 +22,11 @@ Stretch goals:
 
 
 
-##Below is what was added to the class Readme (for reference)
+# Below is what was added to the class Readme (for reference)
 
 
 
- # Project 2 Pitch Guidelines
+## Project 2 Pitch Guidelines
 Project Description and Pitch Guidelines for SEIR SEA P2
 
 ---
