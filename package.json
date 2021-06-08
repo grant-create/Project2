@@ -1,0 +1,27 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "For project 2 I am thinking of making a stock analysis website. This site will take in all the stocks you wish to enter, or if you just want a bunch in a certain price range it will take in those instead. Then by default it will find the 20 day rolling average for the stock and report back if it is above the rolling average or below it. I found an AlphaVantage API that will work for this. I'm not sure if there is a request limit. but all i should need are the past 20-21 days per stock.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grant-create/Project2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grant-create/Project2/issues"
+  },
+  "homepage": "https://github.com/grant-create/Project2#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "method-override": "^3.0.0",
+    "rowdy-logger": "^1.0.2"
+  }
+}
