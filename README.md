@@ -2,7 +2,7 @@
 
 For project 2 I am thinking of making a stock analysis website. This site will take in all the stocks you wish to enter, or if you just want a bunch in a certain price range it will take in those instead. Then by default it will find the 20 day rolling average for the stock and report back if it is above the rolling average or below it.
 I found an AlphaVantage API that will work for this. I'm not sure if there is a request limit. but all i should need are the past 20-21 days per stock.
- 
+  (test)
  I think I will need help determining what the models will be. Maybe a base list of S&P500, and one for user picks?
  The main table will only show the stock if they are below their rolling average.
  
