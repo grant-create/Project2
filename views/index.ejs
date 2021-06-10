@@ -4,27 +4,43 @@
     <hr>
     <div class="table">
         <div class="tableHeader">
+            <thead>
 
-            <p>Stock</p>
-            <p>Rolling Avg</p>
-            <p>Last Close</p>
-            <p>Date Run</p>
+                <th><p>Stock</p></th>
+                <th><p>Rolling Avg</p></th>
+                <th><p>Last Close</p></th>
+                <th><p>Date Run</p></th>
+                <th><p>Remove from table:</p></th>
+            </thead>
         </div>
     <% stocks.forEach(function(stock) { %>
-        <div class="well">
+        <div class="row">
             <%if(stock.rollingAvg>stock.lastClose){%>
+                <tr>
 
-                <p style="color:darkgreen"><u><%= (stock.ticker) %></u></p>
-                <p style="color:darkgreen"><u><%= (stock.rollingAvg) %></u></p>
-                <p style="color:darkgreen"><u><%= (stock.lastClose) %></u></p>
-                <p style="color:darkgreen"><u><%= (stock.date.toLocaleString()) %></u></p>
-            <%}%>
-               
-                <p><%= (stock.ticker) %></p>
-                <p><%= (stock.rollingAvg) %></p>
-                <p><%= (stock.lastClose) %></p>
-                <p><%= (stock.date.toLocaleString()) %></p>
-            <hr>
+                    <td><p style="color:darkgreen"><u><%= (stock.ticker) %></u></p></td>
+                    <td><p style="color:darkgreen"><u><%= (stock.rollingAvg) %></u></p></td>
+                    <td><p style="color:darkgreen"><u><%= (stock.lastClose) %></u></p></td> 
+                    <td><p style="color:darkgreen"><u><%= (stock.date.toLocaleString()) %></u></p></td>
+                    <td><form action="/<%=stock.ticker%>?_method=DELETE" method="POST">
+                        <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
+                    </form></p></td>
+                </tr>
+            <%} else{%>
+               <tr>
+                   <td><p><%= (stock.ticker) %></p></td>
+                   <td><p><%= (stock.rollingAvg) %></p></td>
+                   <td><p><%= (stock.lastClose) %></p></td>
+                   <td><p><%= (stock.date.toLocaleString()) %></p></td>
+                   <td><form action="<%=stock.ticker%>/?_method=DELETE" method="POST">
+                    <button type="submit" name="name" value="<%=stock.ticker%>">❌</button>
+                </form></p></td>
+
+                </tr>
+            
+                <%}%>
+            
         </div>
+
         <%})%>
     </div>
