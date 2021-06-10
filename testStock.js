@@ -7,7 +7,7 @@ const moment = require("moment");
 const Alpaca = require("@alpacahq/alpaca-trade-api");
 const alpaca = new Alpaca({keyId:alpApiKey, secretKey:alpSecretKey, paper: true, usePolygon: false})
 
-
+ 
 
  listOfStocks = ['SPY', 'QQQ', 'DIA', 'AAPL', 'MMM', 'ABT',
   'ABBV', 'ABMD', 'ACN', 'ATVI', 'ADBE', 'AMD', 'AAP', 'AES',
