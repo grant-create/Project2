@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('rollingAvgData', {
+    await queryInterface.createTable('stocks', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,10 +11,10 @@ module.exports = {
       ticker: {
         type: Sequelize.STRING
       },
-      date: {
-        type: Sequelize.DATE
+      rollingAvg: {
+        type: Sequelize.FLOAT
       },
-      close: {
+      lastClose: {
         type: Sequelize.FLOAT
       },
       createdAt: {
@@ -28,6 +28,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('rollingAvgData');
+    await queryInterface.dropTable('stocks');
   }
 };

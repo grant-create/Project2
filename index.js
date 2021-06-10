@@ -46,57 +46,28 @@ app.use(methodOverride('_method'))
 
 // GET / - main index of site
 app.get('/', (req, res) => {
-    const x = alpaca.lastQuote('SPY')
-    .then((response) => {
-       let stockPrice = response.last.askprice
-       res.render("index", {stockPrice:stockPrice})
+    async function findData() {
+        try{
+            const stockData = await db.stocks.findAll()
+            res.render("index", {stocks:stockData})
+
+        }catch(error) {
+            console.log(error)
+          }
+            }
+      
+            findData()
     })
    
-})
+// })
 
 
 //need an app.post call to add ticker, last close, and 20 day average
 
 
-// Going back 21 days
-var d = new Date();
- console.log(d.setDate(d.getDate()-21))
-console.log(d.toLocaleString())
 
 
 
-// https://alpaca.markets/docs/api-documentation/how-to/market-data/
-
-async function getInfo(){
-    let bars = alpaca.getBarsV2(
-        "AAPL",
-        {
-        start: moment().subtract(30, "days").format(),
-        end: moment().subtract(1, "days").format(),
-        timeframe: "1Day",
-        },
-        alpaca.configuration
-    );
-    // console.log(JSON.stringify(bars))
-    const barset = []
-    let avg = 0
-    for await (let b of bars) {
-        barset.push(b);
-        avg += b.ClosePrice
-        
-    } 
-    console.log(barset.length)
-    // console.log(barset[0].ClosePrice, "86")
-   avg = avg/barset.length
-    
-    console.log(avg);
-}
-getInfo()
-
-// //endpoint
-// https://paper-api.alpaca.markets
-//Get a quote using URL
-//https://data.alpaca.markets/v1/last/stocks/GOOG
 
 
 

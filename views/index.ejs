@@ -1,3 +1,30 @@
-<h1>Stocks</h1>
 
-<p><%= stockPrice %></p>
+
+    <h2>Stock List with 20 Day Rolling AVG</h2>
+    <hr>
+    <div class="table">
+        <div class="tableHeader">
+
+            <p>Stock</p>
+            <p>Rolling Avg</p>
+            <p>Last Close</p>
+            <p>Date Run</p>
+        </div>
+    <% stocks.forEach(function(stock) { %>
+        <div class="well">
+            <%if(stock.rollingAvg>stock.lastClose){%>
+
+                <p style="color:darkgreen"><u><%= (stock.ticker) %></u></p>
+                <p style="color:darkgreen"><u><%= (stock.rollingAvg) %></u></p>
+                <p style="color:darkgreen"><u><%= (stock.lastClose) %></u></p>
+                <p style="color:darkgreen"><u><%= (stock.date.toLocaleString()) %></u></p>
+            <%}%>
+               
+                <p><%= (stock.ticker) %></p>
+                <p><%= (stock.rollingAvg) %></p>
+                <p><%= (stock.lastClose) %></p>
+                <p><%= (stock.date.toLocaleString()) %></p>
+            <hr>
+        </div>
+        <%})%>
+    </div>
