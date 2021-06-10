@@ -1,6 +1,18 @@
 
 
     <h2>Stock List with 20 Day Rolling AVG</h2>
+    
+    <form method="POST" action="/symbols">
+        <input type="text" name="name" value="<%= stocks.ticker %>">
+        <button class="btn btn-primary" type="submit"  >Add to List</button>
+      </form>
+      <form action="POST" action="/symbols">
+        <input hidden type="text" name="name" value="<%= stocks.ticker %>">
+          <button type="submit">Update 📈💹</button>
+      </form>
+
+     <% //Should have a check box to potentially hide all stocks where last close is higher%>
+
     <hr>
     <div class="table">
     <div class="tableHeader">
@@ -13,9 +25,12 @@
             <th><p>Remove from table:</p></th>
         </thead>
     </div>
+    <% let i = 0 %>
     <% stocks.forEach(function(stock) { %>
+        
         <div class="row">
             <%if(stock.rollingAvg>stock.lastClose){%>
+                <%i++%>
                 <tr>
 
                     <td><p style="color:darkgreen"><u><%= (stock.ticker) %></u></p></td>
@@ -26,21 +41,16 @@
                         <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
                     </form></p></td>
                 </tr>
-            <%} else{%>
-               <tr>
-                   <td><p><%= (stock.ticker) %></p></td>
-                   <td><p><%= (stock.rollingAvg) %></p></td>
-                   <td><p><%= (stock.lastClose) %></p></td>
-                   <td><p><%= (stock.date.toLocaleString()) %></p></td>
-                   <td><form action="<%=stock.ticker%>/?_method=DELETE" method="POST">
-                    <button type="submit" name="name" value="<%=stock.ticker%>">❌</button>
-                </form></p></td>
-
-                </tr>
+            
             
                 <%}%>
             
         </div>
 
         <%})%>
+
     </div>
+    <p>List count: <%=i%></p>
+
+
+

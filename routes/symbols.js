@@ -16,34 +16,93 @@ const Alpaca = require("@alpacahq/alpaca-trade-api");
 const alpaca = new Alpaca({keyId:alpApiKey, secretKey:alpSecretKey, paper: true, usePolygon: false})
 
 
+// Getting functions from private folder/getInfo.js
+const getInfo = require('../private/getInfo.js')
+
+// getInfo.function()
 
 
 
+
+//ADD TO LIST
 
 //need an app.post call to add ticker, then auto fills the last close 20 day average and date
 // Add stocks to the list: using POST
 
+router.post('/', (req,res) => {
+    // console.log(req.body.name)
+   
+    const newStock = req.body.name
+    async function findOrCreateStock(){
+      try {
+  
+        // the findOrCreate promise returns an array with two elements,
+        // so 'array destructuring' is used to assign the names to the elements
+  
+        const [stocks, created] = await db.stocks.findOrCreate({
+          // where is used search for values in columns
+          where: {
+            ticker: newStock,
+            
+          },
+          default: {
+              rollingAvg: getInfo.getRollingAvg(newStock),
+              lastClose: getInfo.getLastClose(newStock),
+              date: getInfo.getTodaysDate()
+
+          }
+            })
+        console.log(`${stocks.ticker} was ${created ? 'created' : 'found'}`)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+      findOrCreateStock()
+  
+})
 
 
 
+// UPDATE LIST
 
 // Press a button to update entire table. While running, should have a loading bar
+router.post('/', async (req,res) => {
+  let i = 0
+  for(stock of stocks){
+    i++
+    console.log(i)
+    //https://sequelize.org/master/manual/model-querying-basics.html#simple-update-queries
+    // Change everyone without a last name to "Doe"
+    await stocks.update({ 
+      ticker: stock,
+      rollingAvg: getInfo.getRollingAvg(stock),
+      lastClose: getInfo.getLastClose(stock),
+      date: getInfo.getTodaysDate()
+    
+    }, {
+      where: {
+        ticker: stock
+      }
+    });
+  }
+
+
+}) // post req close
 
 
 
 
 
-
+// DELETE FROM LIST
 
 
 // Delete stock from table:
-
-
-router.delete('/:name', (req, res) => {
+router.delete('/:ticker', (req, res) => {
     let removeStock = req.params.ticker
     
     req.params.name
     async function removeStockFromDF() {
+      // console.log("delte funct")
       try {
         await db.stocks.destroy({
           where: { 
@@ -61,7 +120,7 @@ router.delete('/:name', (req, res) => {
     }
     removeStockFromDF()
     
-    res.redirect('/index')
+    res.redirect('/')
     
     
     
