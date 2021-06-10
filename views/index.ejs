@@ -3,16 +3,16 @@
     <h2>Stock List with 20 Day Rolling AVG</h2>
     <hr>
     <div class="table">
-        <div class="tableHeader">
-            <thead>
-
-                <th><p>Stock</p></th>
-                <th><p>Rolling Avg</p></th>
-                <th><p>Last Close</p></th>
-                <th><p>Date Run</p></th>
-                <th><p>Remove from table:</p></th>
-            </thead>
-        </div>
+    <div class="tableHeader">
+        <thead>
+            
+            <th><p>Stock</p></th>
+            <th><p>Rolling Avg</p></th>
+            <th><p>Last Close</p></th>
+            <th><p>Date Run</p></th>
+            <th><p>Remove from table:</p></th>
+        </thead>
+    </div>
     <% stocks.forEach(function(stock) { %>
         <div class="row">
             <%if(stock.rollingAvg>stock.lastClose){%>
@@ -22,7 +22,7 @@
                     <td><p style="color:darkgreen"><u><%= (stock.rollingAvg) %></u></p></td>
                     <td><p style="color:darkgreen"><u><%= (stock.lastClose) %></u></p></td> 
                     <td><p style="color:darkgreen"><u><%= (stock.date.toLocaleString()) %></u></p></td>
-                    <td><form action="/<%=stock.ticker%>?_method=DELETE" method="POST">
+                    <td><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
                         <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
                     </form></p></td>
                 </tr>

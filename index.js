@@ -62,42 +62,19 @@ app.get('/', (req, res) => {
 // })
 
 
-//need an app.post call to add ticker, last close, and 20 day average
-
-
-// Delete stock from table:
 
 
 
-app.delete('/:name', (req, res) => {
-    let removeStock = req.params.name
-    
-    req.params.name
-    async function removeStockFromDF() {
-      try {
-        await db.stocks.destroy({
-          where: { 
-            name:  removeStock
-          }
-        })
-        
-      } catch (error) {
-        console.log(error)
-      }
-      // const allRemainingPkmn = await db.pokemon.findAll()
-      // for (const pokemon of allRemainingPkmn){
-      //   console.log(pokemon.name)
-      // }
-    }
-    removeStockFromDF()
-    
-    res.redirect('/index')
-    
-    
-    
-  })
 
 
+
+
+
+
+
+
+// Imports all routes from the pokemon routes file
+app.use('/symbols', require('./routes/symbols.js'));
 
 
 
