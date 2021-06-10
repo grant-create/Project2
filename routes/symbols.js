@@ -48,17 +48,18 @@ router.post('/', (req,res) => {
           default: {
               rollingAvg: getInfo.getRollingAvg(newStock),
               lastClose: getInfo.getLastClose(newStock),
-              date: getInfo.getTodaysDate()
+              date: new Date()
 
           }
-            })
+        })
+        console.log("line 54")
         console.log(`${stocks.ticker} was ${created ? 'created' : 'found'}`)
       } catch (error) {
         console.log(error)
       }
     }
       findOrCreateStock()
-  
+      res.redirect('/')
 })
 
 
@@ -66,27 +67,32 @@ router.post('/', (req,res) => {
 // UPDATE LIST
 
 // Press a button to update entire table. While running, should have a loading bar
-router.post('/', async (req,res) => {
+router.put('/', async (req,res) => {
   let i = 0
-  for(stock of stocks){
-    i++
-    console.log(i)
+  let allStocks = await db.stocks.findAll()
+
+    
+    for(stock of allStocks){
+      let ticker = stock.get().ticker
+      let lastClose = await getInfo.getLastClose(ticker)
+      let rollingAvg = await getInfo.getRollingAvg(ticker)
+    // i++
+      // console.log(ticker)
     //https://sequelize.org/master/manual/model-querying-basics.html#simple-update-queries
     // Change everyone without a last name to "Doe"
-    await stocks.update({ 
-      ticker: stock,
-      rollingAvg: getInfo.getRollingAvg(stock),
-      lastClose: getInfo.getLastClose(stock),
-      date: getInfo.getTodaysDate()
+      await db.stocks.update({ 
+        ticker: ticker,
+        rollingAvg: rollingAvg,
+        lastClose: lastClose,
+        date: new Date()
     
     }, {
-      where: {
-        ticker: stock
+       where: {
+          ticker: ticker
       }
     });
   }
-
-
+    res.redirect('/')
 }) // post req close
 
 

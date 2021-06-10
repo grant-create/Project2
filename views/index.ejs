@@ -6,7 +6,7 @@
         <input type="text" name="name" value="<%= stocks.ticker %>">
         <button class="btn btn-primary" type="submit"  >Add to List</button>
       </form>
-      <form action="POST" action="/symbols">
+      <form method="POST" action="/symbols?_method=PUT">
         <input hidden type="text" name="name" value="<%= stocks.ticker %>">
           <button type="submit">Update 📈💹</button>
       </form>
@@ -43,8 +43,18 @@
                 </tr>
             
             
-                <%}%>
-            
+                <%}else{%>
+                    <tr>
+
+                        <td><p style="color:gray"><u><%= (stock.ticker) %></u></p></td>
+                        <td><p style="color:gray"><u><%= (stock.rollingAvg) %></u></p></td>
+                        <td><p style="color:gray"><u><%= (stock.lastClose) %></u></p></td> 
+                        <td><p style="color:gray"><u><%= (stock.date.toLocaleString()) %></u></p></td>
+                        <td><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
+                            <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
+                        </form></p></td>
+                    </tr>
+                    <%}%>
         </div>
 
         <%})%>

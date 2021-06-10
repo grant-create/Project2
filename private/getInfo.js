@@ -94,4 +94,4 @@ async function getTodaysDate(){
     return todayDate   
 }
 
-module.exports= {getRollingAvg, getLastClose, getTodaysDate}
+module.exports= {getRollingAvg, getLastClose}
