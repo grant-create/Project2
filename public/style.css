@@ -1,0 +1,109 @@
+*{
+    text-align: center;
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+  }
+ .row{
+   display: grid;
+   background-color: lightgray;
+   grid-template-columns:1fr 1fr 1fr 1fr 1fr ;
+   position: relative;
+   
+ }
+ 
+
+ 
+  /* .tableone{
+   display: grid;
+   height:400px;
+   overflow:auto;  
+   width: 900px;
+   justify-content: center;  
+  } */
+
+  .table{
+    overflow:auto; 
+    float: left;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+   
+.bigtable{
+  
+}
+/*  
+ .tableHeaderone{
+   display: grid;
+   background-color: silver;
+   grid-template-columns:1fr 1fr 1fr 1fr 1fr ;
+   position: sticky;
+   top: 0px;
+   width: 900px;
+   
+  
+ } */
+ .smtable{
+   /* display: grid; */
+   height:auto;
+   /* width: 170px; */
+   overflow:auto;  
+  float: left;
+  /* margin-right: 25px; */
+  /* height: 500px */
+ }
+
+ .smtableHeader{
+   display: grid;
+   background-color: silver;
+   grid-template-columns:1fr ;
+   position: sticky;
+   top: 0px;
+
+ }
+ .smrow{
+    display: grid;
+    background-color: lightgray;
+    grid-template-columns: 1fr 1fr;
+  }
+  u{
+      color: green;
+  }
+
+  #addBtn{
+    float: left;
+    
+  }
+  #updateBtn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    float: right;
+    
+  }
+  #filterBtn{
+    
+    
+  }
+
+  ::before{
+    display: none !important;
+  }
+  .row {
+    display: flex;
+  }
+ 
+ .w3row{
+  margin-left:-5px;
+  margin-right:-5px;
+ }
+ .w3column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+.w3row::after {
+  content: "";
+  clear: both;
+  display: table;
+}

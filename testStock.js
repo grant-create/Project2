@@ -9,7 +9,7 @@ const alpaca = new Alpaca({keyId:alpApiKey, secretKey:alpSecretKey, paper: true,
 
  
 
- listOfStocks = ['SPY', 'QQQ', 'DIA', 'MMM', 'ABT']
+ listOfStocks = ['SPY', 'QQQ', 'DIA', 'MMM', 'ABT', 'SO', 'LUV', 'SWK', 'SBUX', 'STT', 'STE', 'SYK']
 
 
 

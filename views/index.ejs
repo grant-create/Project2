@@ -1,66 +1,139 @@
 
+<div class="container-fluid">
 
     <h2>Stock List with 20 Day Rolling AVG</h2>
-    
-    <form method="POST" action="/symbols">
+    <br><br>
+    <form id="addBtn" method="POST" action="/symbols">
         <input type="text" name="name" value="<%= stocks.ticker %>">
         <button class="btn btn-primary" type="submit"  >Add to List</button>
-      </form>
-      <form method="POST" action="/symbols?_method=PUT">
+    </form>
+    <form id="updateBtn" method="POST" action="/symbols?_method=PUT">
         <input hidden type="text" name="name" value="<%= stocks.ticker %>">
-          <button type="submit">Update 📈💹</button>
-      </form>
+        <button type="submit">Update Table Data 📈💹</button>
+    </form>
+    
+    
+    <form id="filterBtn" method="GET" action="/symbols/number">
+        <label for="number">Filter by price</label> <br>
+        <input type="number" name="number" value=""> <br>
+        <button class="btn btn-primary" type="submit"  >Go</button>
+    </form>
+    
+    
+          
+    <div class="container-fluid w3row"><% //div for both tables %>
+        <div class=w3column>
 
-     <% //Should have a check box to potentially hide all stocks where last close is higher%>
-
-    <hr>
-    <div class="table">
-    <div class="tableHeader">
-        <thead>
             
-            <th><p>Stock</p></th>
-            <th><p>Rolling Avg</p></th>
-            <th><p>Last Close</p></th>
-            <th><p>Date Run</p></th>
-            <th><p>Remove from table:</p></th>
-        </thead>
-    </div>
-    <% let i = 0 %>
-    <% stocks.forEach(function(stock) { %>
-        
-        <div class="row">
-            <%if(stock.rollingAvg>stock.lastClose){%>
-                <%i++%>
-                <tr>
-
-                    <td><p style="color:darkgreen"><u><%= (stock.ticker) %></u></p></td>
-                    <td><p style="color:darkgreen"><u><%= (stock.rollingAvg) %></u></p></td>
-                    <td><p style="color:darkgreen"><u><%= (stock.lastClose) %></u></p></td> 
-                    <td><p style="color:darkgreen"><u><%= (stock.date.toLocaleString()) %></u></p></td>
-                    <td><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
-                        <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
-                    </form></p></td>
-                </tr>
+            <% //Should have a check box to potentially hide all stocks where last close is higher%>
             
-            
-                <%}else{%>
+            <hr>
+            <table class="table-bordered smtable">
+                
+                
+                
+                <thead>
                     <tr>
-
-                        <td><p style="color:gray"><u><%= (stock.ticker) %></u></p></td>
-                        <td><p style="color:gray"><u><%= (stock.rollingAvg) %></u></p></td>
-                        <td><p style="color:gray"><u><%= (stock.lastClose) %></u></p></td> 
-                        <td><p style="color:gray"><u><%= (stock.date.toLocaleString()) %></u></p></td>
-                        <td><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
-                            <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
-                        </form></p></td>
-                    </tr>
-                    <%}%>
+                        <th scope="col">All Stocks</th>
+                    </tr> 
+                </thead>
+                <% stocks.forEach(function(stock) { %>
+                    <% //if(stock.lastClose < num ){%>
+                        <div class="smrow col-sm">
+                            <%if(stock.rollingAvg>stock.lastClose){%>
+                                
+                                <tr>
+                                    <td class="col-sm"><p style="color:darkgreen"><u><%= (stock.ticker) %></u></p></td>
+                                    
+                                    <td class="col-sm"><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
+                                        <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
+                                    </form></td>
+                                </tr>
+                                
+                                
+                                <%}else{%>
+                                    <tr>
+                                        
+                                        <td><p style="color:gray"><u><%= (stock.ticker) %></u></p></td>
+                                        
+                                        <td><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
+                                            <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
+                                        </form></td>
+                                    </tr>
+                                    <%}%>
+                                </div>
+                                
+                                <%//}%>
+                                
+                                <%})%>
+                                
+                                
+                            
+                                
+                                
+                            </table>
+                            
+                            
+                            <table class="table table-bordered table-striped bigtable">
+                                
+                
+                                
+                                
+                                <thead>
+                                    
+                                    <th scope="col"><p>Stock</p></th>
+                                    <th scope="col"><p>Rolling Avg</p></th>
+                                    <th scope="col"><p>Last Close</p></th>
+                                    <th scope="col"><p>Date Run</p></th>
+                                    <th scope="col"><p>Remove from table:</p></th>
+                                </thead>
+                                
+                                <% let i = 0 %>
+                                <% stocks.forEach(function(stock) { %>
+                                    
+                                    <tbody>
+                                        
+                                        <%if(stock.rollingAvg > stock.lastClose){%>
+                                            <%i++%>
+                                            <div class="row">
+                                                <tr class="green">
+                                                    
+                                                    <th><u><%= (stock.ticker) %></u></th>
+                                                    <td><u><%= (stock.rollingAvg) %></u></td>
+                                                    <td><u><%= (stock.lastClose) %></u></td> 
+                                        <td><u><%= (stock.date.toLocaleString()) %></u></td>
+                                        <td><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
+                                            <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
+                                        </form></td>
+                                    </tr>
+                                </div>
+                            </tbody>
+                            
+                            
+                            <%}%>
+                            
+                            
+                            
+                            <%})%>
+                            
+                            
+                        </table>    
+                    </div>
         </div>
-
-        <%})%>
-
-    </div>
     <p>List count: <%=i%></p>
+                    
+                    
+                    
+                    
+                    
+                    
+        
+        
+        
+        
+        
+        
+        
+        
 
-
-
+</div>

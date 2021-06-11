@@ -7,6 +7,7 @@ const rowdyResults = rowdy.begin(express())
 let db = require('../models')
 let methodOverride = require('method-override')
 const router = express.Router();
+const { Op } = require("sequelize");
 
 //Alpaca stuff: 
 const alpApiKey = process.env.APCA_API_KEY_ID
@@ -36,9 +37,15 @@ router.post('/', (req,res) => {
     async function findOrCreateStock(){
       try {
   
+
+        
+        let lastClose = await getInfo.getLastClose(newStock)
+        let rollingAvg = await getInfo.getRollingAvg(newStock)
+        let sDate = await new Date()
+        
         // the findOrCreate promise returns an array with two elements,
         // so 'array destructuring' is used to assign the names to the elements
-  
+        
         const [stocks, created] = await db.stocks.findOrCreate({
           // where is used search for values in columns
           where: {
@@ -46,15 +53,43 @@ router.post('/', (req,res) => {
             
           },
           default: {
-              rollingAvg: getInfo.getRollingAvg(newStock),
-              lastClose: getInfo.getLastClose(newStock),
-              date: new Date()
+              rollingAvg: lastClose,
+              lastClose: rollingAvg,
+              date: sDate
 
           }
         })
-        console.log("line 54")
+
+        //
+
+        let allStocks = await db.stocks.findAll()
+
+    
+        for(stock of allStocks){
+          let ticker = stock.get().ticker
+          let lastClose = await getInfo.getLastClose(ticker)
+          let rollingAvg = await getInfo.getRollingAvg(ticker)
+        // i++
+          // console.log(ticker)
+        //https://sequelize.org/master/manual/model-querying-basics.html#simple-update-queries
+        // Change everyone without a last name to "Doe"
+          await db.stocks.update({ 
+            ticker: ticker,
+            rollingAvg: rollingAvg,
+            lastClose: lastClose,
+            date: sDate
+        
+        }, {
+           where: {
+              ticker: ticker
+          }
+        });
+      }
+        res.redirect('/')
+
+
         console.log(`${stocks.ticker} was ${created ? 'created' : 'found'}`)
-      } catch (error) {
+      }catch (error) {
         console.log(error)
       }
     }
@@ -131,6 +166,31 @@ router.delete('/:ticker', (req, res) => {
     
     
   })
+
+
+
+router.get('/number', (req,res) =>{
+  console.log(req.query.number)
+  db.stocks.findAll({
+
+    where: { 
+      lastClose: {
+
+        [Op.lt]: parseInt(req.query.number)
+      }
+    },
+  }).then(foundstocks => {
+
+    // console.log(foundstocks)
+    res.render("index", {stocks:foundstocks})
+  })
+})
+
+
+
+
+
+
 
 
   module.exports = router;
