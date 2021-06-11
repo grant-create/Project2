@@ -13,45 +13,36 @@
  
 
  
-  /* .tableone{
+  .bigtable{
    display: grid;
-   height:400px;
    overflow:auto;  
-   width: 900px;
-   justify-content: center;  
-  } */
+   justify-content: center;
+   vertical-align: top;
+   align-content: center;
+  }
 
   .table{
     overflow:auto; 
-    float: left;
+  
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
     border: 1px solid #ddd;
   }
    
-.bigtable{
-  
-}
-/*  
- .tableHeaderone{
-   display: grid;
-   background-color: silver;
-   grid-template-columns:1fr 1fr 1fr 1fr 1fr ;
-   position: sticky;
-   top: 0px;
-   width: 900px;
+
+
    
   
- } */
+
  .smtable{
    /* display: grid; */
-   height:auto;
+   height:250px;
    /* width: 170px; */
    overflow:auto;  
   float: left;
   /* margin-right: 25px; */
-  /* height: 500px */
+  height: 500px
  }
 
  .smtableHeader{
@@ -82,13 +73,10 @@
     
   }
   #filterBtn{
-    
-    
+  
   }
 
-  ::before{
-    display: none !important;
-  }
+ 
   .row {
     display: flex;
   }
@@ -96,14 +84,31 @@
  .w3row{
   margin-left:-5px;
   margin-right:-5px;
- }
- .w3column {
+ } 
+  .w3column {
   float: left;
-  width: 50%;
+  width: 120px;
   padding: 5px;
-}
+} 
 .w3row::after {
   content: "";
   clear: both;
   display: table;
 }
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 400px;
+  overflow: auto;
+  }
+  .table-wrapper-scroll-y {
+  display: inline-block;
+  }
+  .bothtables{
+    display: flexbox;
+  }
+  th{
+    position:sticky;
+    background: white;
+    top: 0;
+  }

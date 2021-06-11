@@ -8,6 +8,7 @@ let db = require('../models')
 let methodOverride = require('method-override')
 const router = express.Router();
 const { Op } = require("sequelize");
+let curl = require('curl')
 
 //Alpaca stuff: 
 const alpApiKey = process.env.APCA_API_KEY_ID
@@ -127,8 +128,39 @@ router.put('/', async (req,res) => {
       }
     });
   }
+
+
+  // TRYING TO ADD WALLSTREET BETS REDDIT TO TABLE (UPDATES BUTTON)
+
+
+  // let wsbUrl = 'https://dashboard.nbshare.io/api/v1/apps/reddit'
+    
+  //   let wsbRes = await axios.get(wsbUrl)
+      
+  //     // console.log(wsbRes)
+      
+      
+  //     db.wsb.findAll({
+  //       where: {
+  //         ticker: ticker
+  //       }, include: db.stocks
+        
+        
+  //     }).then(response => {
+  //       console.log(response.get())
+  //     })
+      
+  //   db.wsb.update
+
     res.redirect('/')
 }) // post req close
+
+
+
+
+
+
+
 
 
 
@@ -170,7 +202,7 @@ router.delete('/:ticker', (req, res) => {
 
 
 router.get('/number', (req,res) =>{
-  console.log(req.query.number)
+  // console.log(req.query.number)
   db.stocks.findAll({
 
     where: { 
@@ -185,6 +217,16 @@ router.get('/number', (req,res) =>{
     res.render("index", {stocks:foundstocks})
   })
 })
+
+
+
+
+
+
+
+//api call, then update db, when update other table
+
+
 
 
 

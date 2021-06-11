@@ -44,7 +44,7 @@ const alpaca = new Alpaca({keyId:alpApiKey, secretKey:alpSecretKey, paper: true,
             // console.log(barset.length)
             // console.log(barset[0].ClosePrice, "86")
             avg = avg/barset.length
-            
+            avg = Number((avg).toFixed(3))
             return avg
         }
         }
@@ -93,5 +93,29 @@ async function getTodaysDate(){
     let todayDate = (d.toLocaleString())
     return todayDate   
 }
+
+
+
+
+// 4 day
+
+
+
+
+
+
+
+
+
+// 8 day
+
+
+
+
+
+
+
+
+
 
 module.exports= {getRollingAvg, getLastClose}

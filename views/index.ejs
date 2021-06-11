@@ -11,7 +11,7 @@
         <input hidden type="text" name="name" value="<%= stocks.ticker %>">
         <button type="submit">Update Table Data 📈💹</button>
     </form>
-    
+    <br>
     
     <form id="filterBtn" method="GET" action="/symbols/number">
         <label for="number">Filter by price</label> <br>
@@ -20,23 +20,28 @@
     </form>
     
     
+    <hr>
           
-    <div class="container-fluid w3row"><% //div for both tables %>
+    <div class="container-fluid w3row bothtables"><% //div for both tables %>
         <div class=w3column>
 
+
+           
+            
             
             <% //Should have a check box to potentially hide all stocks where last close is higher%>
             
-            <hr>
-            <table class="table-bordered smtable">
-                
-                
-                
+            <table class=" table-bordered smtable my-custom-scrollbar table-wrapper-scroll-y ">
+                            
+                            
+                            
                 <thead>
                     <tr>
                         <th scope="col">All Stocks</th>
                     </tr> 
                 </thead>
+
+
                 <% stocks.forEach(function(stock) { %>
                     <% //if(stock.lastClose < num ){%>
                         <div class="smrow col-sm">
@@ -54,14 +59,14 @@
                                 <%}else{%>
                                     <tr>
                                         
-                                        <td><p style="color:gray"><u><%= (stock.ticker) %></u></p></td>
+                                        <td><p style="color:gray"><%= (stock.ticker) %></p></td>
                                         
                                         <td><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
                                             <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
                                         </form></td>
                                     </tr>
                                     <%}%>
-                                </div>
+                        </div>
                                 
                                 <%//}%>
                                 
@@ -71,17 +76,16 @@
                             
                                 
                                 
-                            </table>
-                            
-                            
-                            <table class="table table-bordered table-striped bigtable">
-                                
+            </table>
+        </div>   
+            <table class="  table-bordered bigtable my-custom-scrollbar table-wrapper-scroll-y table-sm">
+                
+                
                 
                                 
-                                
-                                <thead>
+                <thead>
                                     
-                                    <th scope="col"><p>Stock</p></th>
+                    <th scope="col"><p>Stock</p></th>
                                     <th scope="col"><p>Rolling Avg</p></th>
                                     <th scope="col"><p>Last Close</p></th>
                                     <th scope="col"><p>Date Run</p></th>
@@ -101,10 +105,10 @@
                                                     <th><u><%= (stock.ticker) %></u></th>
                                                     <td><u><%= (stock.rollingAvg) %></u></td>
                                                     <td><u><%= (stock.lastClose) %></u></td> 
-                                        <td><u><%= (stock.date.toLocaleString()) %></u></td>
-                                        <td><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
-                                            <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
-                                        </form></td>
+                                                    <td><u><%= (stock.date.toLocaleString()) %></u></td>
+                                                    <td><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
+                                                        <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
+                                                    </form></td>
                                     </tr>
                                 </div>
                             </tbody>
@@ -117,23 +121,40 @@
                             <%})%>
                             
                             
-                        </table>    
-                    </div>
-        </div>
-    <p>List count: <%=i%></p>
-                    
-                    
-                    
-                    
-                    
-                    
-        
-        
-        
-        
-        
-        
-        
-        
+            </table>    
+                   
 
+                        
+
+
+
+
+
+        
+                    
+                    
+    </div>
+    <p>List count: <%=i%></p>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+               
+
+
+
+    <!-- </div>     -->
+        
+                
+                
+                
+      
+    
+
+    
 </div>
