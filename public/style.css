@@ -80,7 +80,7 @@
   margin-right:-5px;
   margin: auto;
   display: grid;
-  grid-template-columns: 20% 1fr 1fr;
+  grid-template-columns: 10% 1fr 1fr;
 
   
  } 
