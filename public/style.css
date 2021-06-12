@@ -22,7 +22,7 @@
    float: center;
    /* margin-left: 80px; */
    margin-right: 80px;
-   width: 475px;
+   width: auto
   }
 
   .table{
@@ -63,9 +63,9 @@
   #updateBtn{
     /* padding-top: 5px;
     padding-bottom: 5px;
-    float: right; */
+    float: right; 
     
-  }
+  }*/
   #filterBtn{
 
   } */
@@ -81,6 +81,7 @@
   margin: auto;
   display: grid;
   grid-template-columns: 20% 1fr 1fr;
+
   
  } 
   .w3column {
@@ -105,6 +106,8 @@
   .bothtables{
     display: flexbox;
     justify-content: flex-start;
+    margin-left: 50px;
+    
     
     
   }
@@ -127,6 +130,15 @@
     margin-right: 80px;
    
   }
-  .forms{
-   
-  }
+ td{
+   padding-top: 5px;
+   padding-bottom: 5px;
+   padding-left: 5px;
+   padding-right: 5px;
+ }
+ th{
+   padding-top: 5px;
+   padding-bottom: 5px;
+   padding-left: 5px;
+   padding-right: 5px;
+ }
