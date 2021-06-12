@@ -49,7 +49,8 @@ app.get('/', (req, res) => {
     async function findData() {
         try{
             const stockData = await db.stocks.findAll()
-            res.render("index", {stocks:stockData})
+            const wsbData = await db.wsb.findAll()
+            res.render("index", {stocks:stockData, wsb:wsbData})
 
         }catch(error) {
             console.log(error)
@@ -75,6 +76,7 @@ app.get('/', (req, res) => {
 
 // Imports all routes from the pokemon routes file
 app.use('/symbols', require('./routes/symbols.js'));
+app.use('/profile', require('./routes/profile.js'));
 
 
 

@@ -19,6 +19,10 @@
    justify-content: center;
    vertical-align: top;
    align-content: center;
+   float: center;
+   /* margin-left: 80px; */
+   margin-right: 80px;
+   width: 475px;
   }
 
   .table{
@@ -28,6 +32,9 @@
     border-spacing: 0;
     width: 100%;
     border: 1px solid #ddd;
+
+
+
   }
    
 
@@ -37,7 +44,7 @@
 
  .smtable{
    /* display: grid; */
-   height:250px;
+   
    /* width: 170px; */
    overflow:auto;  
   float: left;
@@ -45,49 +52,40 @@
   height: 500px
  }
 
- .smtableHeader{
-   display: grid;
-   background-color: silver;
-   grid-template-columns:1fr ;
-   position: sticky;
-   top: 0px;
-
- }
- .smrow{
-    display: grid;
-    background-color: lightgray;
-    grid-template-columns: 1fr 1fr;
-  }
   u{
       color: green;
   }
-
+/* 
   #addBtn{
     float: left;
     
   }
   #updateBtn{
-    padding-top: 5px;
+    /* padding-top: 5px;
     padding-bottom: 5px;
-    float: right;
+    float: right; */
     
   }
   #filterBtn{
-  
-  }
+
+  } */
 
  
-  .row {
+  /* .row {
     display: flex;
-  }
+  } */
  
  .w3row{
   margin-left:-5px;
   margin-right:-5px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 20% 1fr 1fr;
+  
  } 
   .w3column {
   float: left;
-  width: 120px;
+  width: 250px;
   padding: 5px;
 } 
 .w3row::after {
@@ -106,9 +104,29 @@
   }
   .bothtables{
     display: flexbox;
+    justify-content: flex-start;
+    
+    
   }
   th{
     position:sticky;
     background: white;
     top: 0;
+  }
+  .wsbtable{
+    float: right;
+    justify-content: right;
+  }
+  h3{
+    text-align: left;
+    margin: 0 auto;
+    display: inline-block;
+  }
+  .mainheading{
+    margin-left: 80px;
+    margin-right: 80px;
+   
+  }
+  .forms{
+   
   }

@@ -115,7 +115,8 @@ router.put('/', async (req,res) => {
     // i++
       // console.log(ticker)
     //https://sequelize.org/master/manual/model-querying-basics.html#simple-update-queries
-    // Change everyone without a last name to "Doe"
+    
+    // Test the await on 119
       await db.stocks.update({ 
         ticker: ticker,
         rollingAvg: rollingAvg,
@@ -130,28 +131,41 @@ router.put('/', async (req,res) => {
   }
 
 
+//  PART OF UPDATE LIST
+
   // TRYING TO ADD WALLSTREET BETS REDDIT TO TABLE (UPDATES BUTTON)
 
+  
+db.wsb.destroy({
+    where: {},
+    truncate: true
+  })
 
-  // let wsbUrl = 'https://dashboard.nbshare.io/api/v1/apps/reddit'
+
+  let wsbUrl = 'https://dashboard.nbshare.io/api/v1/apps/reddit'
     
-  //   let wsbRes = await axios.get(wsbUrl)
-      
-  //     // console.log(wsbRes)
-      
-      
-  //     db.wsb.findAll({
-  //       where: {
-  //         ticker: ticker
-  //       }, include: db.stocks
-        
-        
-  //     }).then(response => {
-  //       console.log(response.get())
-  //     })
-      
-  //   db.wsb.update
+    let wsbRes = await axios.get(wsbUrl)
+      for (item of wsbRes.data){
 
+            // console.log(item.sentiment, item.ticker)
+        
+        //     //post to wsb table, then update
+        
+        db.wsb.findOrCreate({
+          
+          where: {
+            
+            ticker: item.ticker,
+            sentiment: item.sentiment,
+            sentiment_score: item.sentiment_score
+          }
+          
+      }).then(response => {
+        // console.log(response)
+      })
+      
+    db.wsb.update
+      }
     res.redirect('/')
 }) // post req close
 
@@ -201,6 +215,10 @@ router.delete('/:ticker', (req, res) => {
 
 
 
+
+
+// TO FILTER TABLE BY PRICE OF STOCK
+
 router.get('/number', (req,res) =>{
   // console.log(req.query.number)
   db.stocks.findAll({
@@ -217,6 +235,53 @@ router.get('/number', (req,res) =>{
     res.render("index", {stocks:foundstocks})
   })
 })
+
+
+
+
+
+
+// router.post('/', (req,res) => {
+
+  
+//   let wsbUrl = 'https://dashboard.nbshare.io/api/v1/apps/reddit'
+  
+//     let wsbRes = await axios.get(wsbUrl)
+  
+//       // console.log(wsbRes)
+  
+//       //post to wsb table, then update
+  
+//       db.wsb.findOrCreate({
+//           where: {
+//             ticker: 'WOOF',
+//             sentiment: 'Bearish',
+//             sentiment_score: 0.81
+//         }).then(stock => {
+//                 console.log('Created: ', stock.sentiment)
+//        })
+      
+          
+        
+//           db.wsb.update
+        
+//       })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

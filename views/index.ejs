@@ -1,28 +1,32 @@
 
-<div class="container-fluid">
+
 
     <h2>Stock List with 20 Day Rolling AVG</h2>
     <br><br>
-    <form id="addBtn" method="POST" action="/symbols">
-        <input type="text" name="name" value="<%= stocks.ticker %>">
-        <button class="btn btn-primary" type="submit"  >Add to List</button>
-    </form>
-    <form id="updateBtn" method="POST" action="/symbols?_method=PUT">
-        <input hidden type="text" name="name" value="<%= stocks.ticker %>">
-        <button type="submit">Update Table Data 📈💹</button>
-    </form>
-    <br>
-    
-    <form id="filterBtn" method="GET" action="/symbols/number">
-        <label for="number">Filter by price</label> <br>
-        <input type="number" name="number" value=""> <br>
-        <button class="btn btn-primary" type="submit"  >Go</button>
-    </form>
-    
+    <div class="forms">
+
+        
+        <form id="addBtn" method="POST" action="/symbols">
+            <input type="text" name="name" value="<%= stocks.ticker %>">
+            <button class="btn btn-primary" type="submit"  >Add to All Stocks List</button>
+        </form>
+        <br>
+        <form id="updateBtn" method="POST" action="/symbols?_method=PUT">
+            <input hidden type="text" name="name" value="<%= stocks.ticker %>">
+            <button type="submit">Update All Table Data 📈💹</button>
+        </form>
+        <br>
+        
+        <form id="filterBtn" method="GET" action="/symbols/number">
+            <label for="number">Filter by price</label> <br>
+            <input type="number" name="number" value=""> 
+            <button class="btn btn-primary" type="submit"  >Go</button>
+        </form>
+    </div>
     
     <hr>
           
-    <div class="container-fluid w3row bothtables"><% //div for both tables %>
+    <div class=" w3row bothtables"><% //div for all tables %>
         <div class=w3column>
 
 
@@ -76,15 +80,19 @@
                             
                                 
                                 
+            
+                            
+                                
             </table>
         </div>   
+            
             <table class="  table-bordered bigtable my-custom-scrollbar table-wrapper-scroll-y table-sm">
                 
                 
                 
                                 
                 <thead>
-                                    
+                    
                     <th scope="col"><p>Stock</p></th>
                                     <th scope="col"><p>Rolling Avg</p></th>
                                     <th scope="col"><p>Last Close</p></th>
@@ -99,7 +107,7 @@
                                         
                                         <%if(stock.rollingAvg > stock.lastClose){%>
                                             <%i++%>
-                                            <div class="row">
+                                            
                                                 <tr class="green">
                                                     
                                                     <th><u><%= (stock.ticker) %></u></th>
@@ -121,23 +129,61 @@
                             <%})%>
                             
                             
-            </table>    
+                            
+            </table> 
                    
 
+
+     <% // WSB TABLE %>
+     
+     <table class="wsbTable w3row table-bordered bigtable my-custom-scrollbar table-wrapper-scroll-y table-sm">
+                
+                
+                
+                                
+        <thead>
+                            
+            
+                            <th scope="col"><p>Ticker</p></th>
+                            <th scope="col"><p>Sentiment</p></th>
+                            <th scope="col"><p>Sentiment Score</p></th>
+                            <th scope="col"><p>Updated At</p></th>
+                            <th scope="col"><p>Remove from table:</p></th>
+                        </thead>
                         
-
-
-
-
-
-        
+                        
+                        <% wsb.forEach(function(wsbitem) { %>
+                            
+                            <tbody>
+                                
+                                
+                                    <%i++%>
+                                   
+                                        <tr class="green">
+                                            
+                                            <th><u><%= (wsbitem.ticker) %></u></th>
+                                            <td><u><%= (wsbitem.sentiment) %></u></td>
+                                            <td><u><%= (wsbitem.sentiment_score) %></u></td> 
+                                            <td><u><%= (wsbitem.updatedAt.toLocaleString()) %></u></td> 
+                                            <td><form action="/symbols/<%=wsbitem.ticker%>?_method=DELETE" method="POST">
+                                                <button type="submit" name="ticker" value="<%=wsbitem.ticker%>">❌</button>
+                                            </form></td>
+                            </tr>
+                        </div>
+                    </tbody>
                     
                     
-    </div>
-    <p>List count: <%=i%></p>
-                
-                
-                
+                    
+                    
+                    
+                    
+                    <%})%>
+                    
+                    
+                    
+    </table>  
+    </div>   
+          
                 
                 
                 
@@ -148,7 +194,7 @@
 
 
 
-    <!-- </div>     -->
+    
         
                 
                 
