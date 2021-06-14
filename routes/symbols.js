@@ -112,6 +112,8 @@ router.put('/', async (req,res) => {
       let ticker = stock.get().ticker
       let lastClose = await getInfo.getLastClose(ticker)
       let rollingAvg = await getInfo.getRollingAvg(ticker)
+      let twentyDayBreakout = await getInfo.getTwentyBreakout(ticker)
+      let seventyDayBreakout = await getInfo.getSeventyBreakout(ticker)
     // i++
       // console.log(ticker)
     //https://sequelize.org/master/manual/model-querying-basics.html#simple-update-queries
@@ -121,7 +123,9 @@ router.put('/', async (req,res) => {
         ticker: ticker,
         rollingAvg: rollingAvg,
         lastClose: lastClose,
-        date: new Date()
+        date: new Date(),
+        twentyDayBreakout: twentyDayBreakout,
+        seventyDayBreakout: seventyDayBreakout
     
     }, {
        where: {
@@ -233,7 +237,7 @@ router.get('/number', async (req,res) =>{
   }).then(foundstocks => {
     
     // console.log(foundstocks)
-    const wsb = db.wsb.findAll()
+    
     
     res.render("index", {stocks:foundstocks, wsb:wsbData})
   })

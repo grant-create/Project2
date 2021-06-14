@@ -94,6 +94,89 @@ listOfStocks = ['ATVI', 'AMD', 'AES', 'AFL', 'ALK', 'LNT', 'MO', 'AMCR', 'AEE', 
 
 
 
+
+
+
+        
+// 20 DAY BREAKOUT
+
+
+       
+
+            
+            // // https://alpaca.markets/docs/api-documentation/how-to/market-data/
+            // let barsTwe = alpaca.getBarsV2(
+            //     stock,
+            //     {
+            //         start: moment().subtract(28, "days").format(),
+            //         end: moment().subtract(1, "days").format(),
+            //         timeframe: "1Day",
+            //     },
+            //     alpaca.configuration
+            //     );
+            //     // console.log(JSON.stringify(bars))
+            //      const barsetTwe = []
+            //     let twentyDayBreakout =false
+            //     // for await (let b of barsTwe) {
+            //     //     barsetTwe.push(b);   
+            //     // } 
+            //     // console.log(barsetTwe.length)
+            //     lastClose = barsetTwe[barsetTwe.length - 1].ClosePrice
+            //     if(lastClose>= Math.max(barsTwe)){
+            //         twentyDayBreakout = true
+            //     }
+                
+                 
+            
+            
+
+
+
+            // // 70 Day Breakout
+
+            
+       
+
+            
+            // // https://alpaca.markets/docs/api-documentation/how-to/market-data/
+            // let barsSev = alpaca.getBarsV2(
+            //     stock,
+            //     {
+            //         start: moment().subtract(98, "days").format(),
+            //         end: moment().subtract(1, "days").format(),
+            //         timeframe: "1Day",
+            //     },
+            //     alpaca.configuration
+            //     );
+            //     // console.log(JSON.stringify(bars))
+            //     const barsetSev = []
+            //     let seventyDayBreakout =false
+            //     // for await (let b of barsSev) {
+            //     //     barsetSev.push(b);   
+            //     // } 
+            //     // console.log(barset.length)
+            //     lastClose = barsetSev[barsetSev.length - 1].ClosePrice
+            //     if(lastClose>= Math.max(barsSev)){
+            //         seventyDayBreakout = true
+            //     }
+                
+                
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //Creating the base stock list
        
        db.stocks.create({
@@ -101,6 +184,9 @@ listOfStocks = ['ATVI', 'AMD', 'AES', 'AFL', 'ALK', 'LNT', 'MO', 'AMCR', 'AEE', 
                rollingAvg: avg,
                lastClose: lastClose,
                date: todayDate
+            //    twentyDayBreakout: twentyDayBreakout,
+            //    seventyDayBreakout: seventyDayBreakout
+
     }).then(stocks => {
                    console.log('Created: ', stocks.ticker, stocks.rollingAvg, stocks.lastClose, stocks.date)
                })
@@ -175,3 +261,46 @@ getInfo()
 // }).then(result => {
 //         console.log('Created: ', result.username)
 //     })
+
+
+
+
+
+
+
+
+
+        // async function test() {
+
+      
+        //     // https://alpaca.markets/docs/api-documentation/how-to/market-data/
+        //     let barsTwe = alpaca.getBarsV2(
+        //         "AAPL",
+        //         {
+        //             start: moment().subtract(28, "days").format(),
+        //             end: moment().subtract(1, "days").format(),
+        //             timeframe: "1Day",
+        //         },
+        //         alpaca.configuration
+        //         );
+        //         // console.log(JSON.stringify(bars))
+        //          const barsetTwe = []
+        //         let twentyDayBreakout =false
+        //         for await (let b of barsTwe) {
+        //             barsetTwe.push(b.HighPrice); 
+        //             // console.log(b)  
+        //         } 
+        //         // console.log(barsetTwe)
+
+        //         lastClose = barsetTwe[barsetTwe.length - 1]
+               
+        //         // console.log(Math.max(...barsetTwe))
+
+        //         // console.log(lastClose, '🎈🎈🎈',  Math.max(...barsetTwe))
+
+        //         if(lastClose>= Math.max(...barsTwe)){
+        //             twentyDayBreakout = true
+
+        //         }
+        //     } 
+        //     test()

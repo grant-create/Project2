@@ -99,7 +99,7 @@ async function getTodaysDate(){
 
 // 20 DAY BREAKOUT
 
-async function getBreakout(stock){
+async function getTwentyBreakout(stock){
     if(stock == "" || typeof(stock) == 'integer'|| stock.length>5){
         //pass
     }else{
@@ -118,12 +118,13 @@ async function getBreakout(stock){
             // console.log(JSON.stringify(bars))
             const barset = []
             let tDayBreakout =false
-            // for await (let b of bars) {
-            //     barset.push(b);   
-            // } 
+            for await (let b of bars) {
+                barset.push(b.ClosePrice);   
+            } 
             // console.log(barset.length)
-            lastClose = barset[barset.length - 1].ClosePrice
-            if(lastClose>= Math.max(bars)){
+
+            lastClose = barset[barset.length - 1]
+            if(lastClose>= Math.max(...barset)){
                 tDayBreakout = true
             }
             
@@ -153,17 +154,17 @@ async function getSeventyBreakout(stock){
             );
             // console.log(JSON.stringify(bars))
             const barset = []
-            let tDayBreakout =false
-            // for await (let b of bars) {
-            //     barset.push(b);   
-            // } 
-            // console.log(barset.length)
-            lastClose = barset[barset.length - 1].ClosePrice
-            if(lastClose>= Math.max(bars)){
-                tDayBreakout = true
+            let sDayBreakout =false
+            for await (let b of bars) {
+                barset.push(b.ClosePrice);   
+            } 
+            
+            lastClose = barset[barset.length - 1]
+            if(lastClose>= Math.max(...barset)){
+                sDayBreakout = true
             }
             
-            return tDayBreakout
+            return sDayBreakout
         }
         }
 
@@ -198,4 +199,4 @@ async function getSeventyBreakout(stock){
 
 
 
-module.exports= {getRollingAvg, getLastClose, getBreakout, getSeventyBreakout}
+module.exports= {getRollingAvg, getLastClose, getTwentyBreakout, getSeventyBreakout}
