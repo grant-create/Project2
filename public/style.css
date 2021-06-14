@@ -2,6 +2,7 @@
     text-align: center;
     /* border: 1px solid black; */
     box-sizing: border-box;
+    /* background-image: linear-gradient(to right, #042A2B,#5EB1BF,#CDEDF6,#EF7B45,#D84727); */
   }
  .row{
    display: grid;
@@ -147,3 +148,24 @@
    grid-template-columns: 1fr 1fr 1fr;
    justify-content: left;
  }
+ 
+ .green{
+   color: greenyellow;
+  
+ }
+
+
+ /* colors  */
+ 042A2B
+ 5EB1BF
+ CDEDF6
+ EF7B45
+ D84727
+ 
+
+
+
+
+
+
+

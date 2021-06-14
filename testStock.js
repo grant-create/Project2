@@ -200,7 +200,7 @@ listOfStocks = ['ATVI', 'AMD', 'AES', 'AFL', 'ALK', 'LNT', 'MO', 'AMCR', 'AEE', 
 
 
 }
-getInfo()
+// getInfo()
 
 // db.stocks.sync({alter:true})
 
@@ -270,37 +270,37 @@ getInfo()
 
 
 
-        // async function test() {
+        async function test() {
 
       
-        //     // https://alpaca.markets/docs/api-documentation/how-to/market-data/
-        //     let barsTwe = alpaca.getBarsV2(
-        //         "AAPL",
-        //         {
-        //             start: moment().subtract(28, "days").format(),
-        //             end: moment().subtract(1, "days").format(),
-        //             timeframe: "1Day",
-        //         },
-        //         alpaca.configuration
-        //         );
-        //         // console.log(JSON.stringify(bars))
-        //          const barsetTwe = []
-        //         let twentyDayBreakout =false
-        //         for await (let b of barsTwe) {
-        //             barsetTwe.push(b.HighPrice); 
-        //             // console.log(b)  
-        //         } 
-        //         // console.log(barsetTwe)
+            // https://alpaca.markets/docs/api-documentation/how-to/market-data/
+            let barsTwe = alpaca.getBarsV2(
+                "AAPL",
+                {
+                    start: moment().subtract(4, "days").format(),
+                    end: moment().subtract(1, "days").format(),
+                    timeframe: "1Day",
+                },
+                alpaca.configuration
+                );
+                // console.log(JSON.stringify(bars))
+                 const barsetTwe = []
+                let twentyDayBreakout =false
+                for await (let b of barsTwe) {
+                    barsetTwe.push(b); 
+                    console.log(b)  
+                } 
+                // console.log(barsetTwe)
 
-        //         lastClose = barsetTwe[barsetTwe.length - 1]
+                lastClose = barsetTwe[barsetTwe.length - 1]
                
-        //         // console.log(Math.max(...barsetTwe))
+                // console.log(Math.max(...barsetTwe))
 
-        //         // console.log(lastClose, '🎈🎈🎈',  Math.max(...barsetTwe))
+                // console.log(lastClose, '🎈🎈🎈',  Math.max(...barsetTwe))
 
-        //         if(lastClose>= Math.max(...barsTwe)){
-        //             twentyDayBreakout = true
+                if(lastClose>= Math.max(...barsetTwe)){
+                    twentyDayBreakout = true
 
-        //         }
-        //     } 
-        //     test()
+                }
+            } 
+            test()

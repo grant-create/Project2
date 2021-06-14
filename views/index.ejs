@@ -59,7 +59,7 @@
                 <% stocks.forEach(function(stock) { %>
                     <% //if(stock.lastClose < num ){%>
                         <div class="smrow col-sm">
-                            <%if(stock.rollingAvg>stock.lastClose|| stock.twentyDayBreakout == true || stock.seventyDayBreakout ==true){%>
+                            <%if(stock.twentyDayBreakout == true || stock.seventyDayBreakout ==true){%>
                                 
                                 <tr class="green">
                                     <td class="col-sm"><p><u><%= (stock.ticker) %></u></p></td>
@@ -153,7 +153,7 @@
      <% // WSB TABLE %>
      
      <table class="wsbTable w3row table-bordered bigtable my-custom-scrollbar table-wrapper-scroll-y table-sm">
-                
+               
          
          <thead>
              
@@ -170,24 +170,33 @@
                         <% wsb.forEach(function(wsbitem) { %>
                             
                             <tbody>
+                                <% if(wsbitem.sentiment_score > 0){ %>
                                 
-                                
+
+                                    
                                     <%i++%>
-                                   
-                                        <tr class="wsbrows">
+                                    
+                                    <tr class="wsbrows">
+                                        
+                                        <th><u><%= (wsbitem.ticker) %></u></th>
+                                        <td><u><%= (wsbitem.sentiment) %></u></td>
+                                        <td><u><%= (wsbitem.sentiment_score) %></u></td> 
+                                        <td><u><%= (wsbitem.updatedAt.toLocaleString()) %></u></td> 
+                                        
+                                    </tr>
+                                
+                            <% } else{ %>
+                                <tr class="wsbrows">
                                             
-                                            <th><%= (wsbitem.ticker) %></th>
-                                            <td><%= (wsbitem.sentiment) %></td>
-                                            <td><%= (wsbitem.sentiment_score) %></td> 
-                                            <td><%= (wsbitem.updatedAt.toLocaleString()) %></td> 
-                                            
-                            </tr>
-                        </div>
+                                    <th><%= (wsbitem.ticker) %></th>
+                                    <td><%= (wsbitem.sentiment) %></td>
+                                    <td><%= (wsbitem.sentiment_score) %></td> 
+                                    <td><%= (wsbitem.updatedAt.toLocaleString()) %></td> 
+                                    
+                    </tr>
+                            
+                        <%}%>
                     </tbody>
-                    
-                    
-                    
-                    
                     
                     
                     <%})%>
