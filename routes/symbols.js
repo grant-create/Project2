@@ -219,8 +219,9 @@ router.delete('/:ticker', (req, res) => {
 
 // TO FILTER TABLE BY PRICE OF STOCK
 
-router.get('/number', (req,res) =>{
+router.get('/number', async (req,res) =>{
   // console.log(req.query.number)
+  const wsbData = await db.wsb.findAll()
   db.stocks.findAll({
 
     where: { 
@@ -230,9 +231,11 @@ router.get('/number', (req,res) =>{
       }
     },
   }).then(foundstocks => {
-
+    
     // console.log(foundstocks)
-    res.render("index", {stocks:foundstocks})
+    const wsb = db.wsb.findAll()
+    
+    res.render("index", {stocks:foundstocks, wsb:wsbData})
   })
 })
 

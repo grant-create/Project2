@@ -97,6 +97,86 @@ async function getTodaysDate(){
 
 
 
+// 20 DAY BREAKOUT
+
+async function getBreakout(stock){
+    if(stock == "" || typeof(stock) == 'integer'|| stock.length>5){
+        //pass
+    }else{
+
+        
+        // https://alpaca.markets/docs/api-documentation/how-to/market-data/
+        let bars = alpaca.getBarsV2(
+            stock,
+            {
+                start: moment().subtract(30, "days").format(),
+                end: moment().subtract(1, "days").format(),
+                timeframe: "1Day",
+            },
+            alpaca.configuration
+            );
+            // console.log(JSON.stringify(bars))
+            const barset = []
+            let tDayBreakout =false
+            // for await (let b of bars) {
+            //     barset.push(b);   
+            // } 
+            // console.log(barset.length)
+            lastClose = barset[barset.length - 1].ClosePrice
+            if(lastClose>= Math.max(bars)){
+                tDayBreakout = true
+            }
+            
+            return tDayBreakout
+        }
+        }
+
+        
+
+        // 70 Day Breakout
+
+async function getBreakout(stock){
+    if(stock == "" || typeof(stock) == 'integer'|| stock.length>5){
+        //pass
+    }else{
+
+        
+        // https://alpaca.markets/docs/api-documentation/how-to/market-data/
+        let bars = alpaca.getBarsV2(
+            stock,
+            {
+                start: moment().subtract(30, "days").format(),
+                end: moment().subtract(1, "days").format(),
+                timeframe: "1Day",
+            },
+            alpaca.configuration
+            );
+            // console.log(JSON.stringify(bars))
+            const barset = []
+            let tDayBreakout =false
+            // for await (let b of bars) {
+            //     barset.push(b);   
+            // } 
+            // console.log(barset.length)
+            lastClose = barset[barset.length - 1].ClosePrice
+            if(lastClose>= Math.max(bars)){
+                tDayBreakout = true
+            }
+            
+            return tDayBreakout
+        }
+        }
+
+
+
+
+
+
+
+
+
+
+
 // 4 day
 
 
@@ -118,4 +198,4 @@ async function getTodaysDate(){
 
 
 
-module.exports= {getRollingAvg, getLastClose}
+module.exports= {getRollingAvg, getLastClose, getBreakout}
