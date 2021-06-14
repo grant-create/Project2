@@ -109,7 +109,7 @@ async function getBreakout(stock){
         let bars = alpaca.getBarsV2(
             stock,
             {
-                start: moment().subtract(30, "days").format(),
+                start: moment().subtract(28, "days").format(),
                 end: moment().subtract(1, "days").format(),
                 timeframe: "1Day",
             },
@@ -131,11 +131,11 @@ async function getBreakout(stock){
         }
         }
 
-        
+
 
         // 70 Day Breakout
 
-async function getBreakout(stock){
+async function getSeventyBreakout(stock){
     if(stock == "" || typeof(stock) == 'integer'|| stock.length>5){
         //pass
     }else{
@@ -145,7 +145,7 @@ async function getBreakout(stock){
         let bars = alpaca.getBarsV2(
             stock,
             {
-                start: moment().subtract(30, "days").format(),
+                start: moment().subtract(98, "days").format(),
                 end: moment().subtract(1, "days").format(),
                 timeframe: "1Day",
             },
@@ -198,4 +198,4 @@ async function getBreakout(stock){
 
 
 
-module.exports= {getRollingAvg, getLastClose, getBreakout}
+module.exports= {getRollingAvg, getLastClose, getBreakout, getSeventyBreakout}

@@ -17,7 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     ticker: DataTypes.STRING,
     rollingAvg: DataTypes.FLOAT,
     lastClose: DataTypes.FLOAT,
-    date: DataTypes.DATE
+    date: DataTypes.DATE,
+    twentyDayBreakout: DataTypes.BOOLEAN,
+    seventyDayBreakout: DataTypes.BOOLEAN
+
   }, {
     sequelize,
     modelName: 'stocks',
