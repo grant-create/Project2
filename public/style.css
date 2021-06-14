@@ -142,3 +142,8 @@
    padding-left: 5px;
    padding-right: 5px;
  }
+ .tableHeaders{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   justify-content: left;
+ }

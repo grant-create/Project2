@@ -25,7 +25,14 @@
     </div>
     
     <hr>
-          
+    
+    <div class="tableHeaders">
+<h4>All Stocks + 20 and 70 Day Breakouts</h4>
+<h4>Stocks closed below 20 Day Rolling Average</h4>
+<h4>Reddit WallStreet Bets </h4>
+    </div>
+
+
     <div class=" w3row bothtables"><% //div for all tables %>
         <div class=w3column>
 
@@ -42,6 +49,9 @@
                 <thead>
                     <tr>
                         <th scope="col">All Stocks</th>
+                        <th scope="col">20 D</th>
+                        <th scope="col">70 D</th>
+
                     </tr> 
                 </thead>
 
@@ -49,10 +59,12 @@
                 <% stocks.forEach(function(stock) { %>
                     <% //if(stock.lastClose < num ){%>
                         <div class="smrow col-sm">
-                            <%if(stock.rollingAvg>stock.lastClose){%>
+                            <%if(stock.rollingAvg>stock.lastClose|| stock.twentyDayBreakout == true || stock.seventyDayBreakout ==true){%>
                                 
-                                <tr>
-                                    <td class="col-sm"><p style="color:darkgreen"><u><%= (stock.ticker) %></u></p></td>
+                                <tr class="green">
+                                    <td class="col-sm"><p><u><%= (stock.ticker) %></u></p></td>
+                                    <td class="col-sm"><p><u><%= (stock.twentyDayBreakout) %></u></p></td>
+                                    <td class="col-sm"><p><u><%= (stock.seventyDayBreakout) %></u></p></td>
                                     
                                     <td class="col-sm"><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
                                         <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
@@ -63,7 +75,9 @@
                                 <%}else{%>
                                     <tr>
                                         
-                                        <td><p style="color:gray"><%= (stock.ticker) %></p></td>
+                                        <td><p></p><%= (stock.ticker) %></p></td>
+                                        <td><p></p><%= (stock.twentyDayBreakout) %></p></td>
+                                        <td><p></p><%= (stock.seventyDayBreakout) %></p></td>
                                         
                                         <td><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
                                             <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
@@ -132,8 +146,7 @@
                             <%})%>
                             
                             
-                            
-            </table> 
+                        </table> 
                    
 
 
@@ -141,18 +154,17 @@
      
      <table class="wsbTable w3row table-bordered bigtable my-custom-scrollbar table-wrapper-scroll-y table-sm">
                 
-                
-                
-                                
-        <thead>
-                            
+         
+         <thead>
+             
+             
+             <th scope="col"><p>Ticker</p></th>
+             <th scope="col"><p>Sentiment</p></th>
+             <th scope="col"><p>Sentiment Score</p></th>
+             <th scope="col"><p>Updated At</p></th>
+             
+            </thead>
             
-                            <th scope="col"><p>Ticker</p></th>
-                            <th scope="col"><p>Sentiment</p></th>
-                            <th scope="col"><p>Sentiment Score</p></th>
-                            <th scope="col"><p>Updated At</p></th>
-                            
-                        </thead>
                         
                         
                         <% wsb.forEach(function(wsbitem) { %>
@@ -186,57 +198,7 @@
     </div>   
           
                 
-                
-                
-     <% // Breakouts table %>  
-    <table>
-              
-                                
-        <thead>
-                            
-            
-            <th scope="col"><p>Ticker</p></th>
-            <th scope="col"><p>20 Day</p></th>
-            <th scope="col"><p>70 Day</p></th>
-            
-            
-        </thead>
-        
-        
-        <% stocks.forEach(function(stock) { %>
            
-
-                <tbody>
-                    
-                    
-                    
-                    
-                    <tr class="">
-                        
-                        <th><%= (stock.ticker) %></th>
-                        <td><%= (stock.twentyDayBreakout) %></td>
-                        <td><%= (stock.seventyDayBreakout) %></td>
-                        
-                        
-                    </tr>
-                    
-                </tbody>
-           
-    
-    
-            
-    
-    
-    
-        <%})%>
-
-
-
-
-
-
-    </table>    
-                
                 
                
 
