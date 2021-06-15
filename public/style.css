@@ -3,6 +3,7 @@
     /* border: 1px solid black; */
     box-sizing: border-box;
     /* background-image: linear-gradient(to right, #042A2B,#5EB1BF,#CDEDF6,#EF7B45,#D84727); */
+    font-size: 12px;
   }
  .row{
    display: grid;
@@ -11,90 +12,25 @@
    position: relative;
    
  }
+ u{
+  color: green;
+}
  
 
- 
-  .bigtable{
-   display: grid;
-   overflow:auto;  
-   justify-content: center;
-   vertical-align: top;
-   align-content: center;
-   float: center;
-   /* margin-left: 80px; */
-   margin-right: 80px;
-   width: auto
-  }
-
-  .table{
-    overflow:auto; 
-  
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    border: 1px solid #ddd;
-
-
-
-  }
-   
-
-
-   
-  
-
- .smtable{
-   /* display: grid; */
-   
-   /* width: 170px; */
-   overflow:auto;  
-  float: left;
-  /* margin-right: 25px; */
-  height: 500px
- }
-
-  u{
-      color: green;
-  }
-/* 
-  #addBtn{
-    float: left;
-    
-  }
-  #updateBtn{
-    /* padding-top: 5px;
-    padding-bottom: 5px;
-    float: right; 
-    
-  }*/
-  #filterBtn{
-
-  } */
-
- 
-  /* .row {
+  .row {
     display: flex;
-  } */
+  }
  
  .w3row{
   margin-left:-5px;
   margin-right:-5px;
   margin: auto;
   display: grid;
-  grid-template-columns: 10% 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 
   
  } 
-  .w3column {
-  float: left;
-  width: 250px;
-  padding: 5px;
-} 
-.w3row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+  
 
 .my-custom-scrollbar {
   position: relative;
@@ -104,28 +40,14 @@
   .table-wrapper-scroll-y {
   display: inline-block;
   }
-  .bothtables{
-    display: flexbox;
-    justify-content: flex-start;
-    margin-left: 50px;
-    
-    
-    
-  }
+ 
   th{
     position:sticky;
     background: white;
     top: 0;
   }
-  .wsbtable{
-    float: right;
-    justify-content: right;
-  }
-  h3{
-    text-align: left;
-    margin: 0 auto;
-    display: inline-block;
-  }
+ 
+ 
   .mainheading{
     margin-left: 80px;
     margin-right: 80px;
@@ -146,24 +68,36 @@
  .tableHeaders{
    display: grid;
    grid-template-columns: 1fr 1fr 1fr;
-   justify-content: left;
+   align-content: center;
  }
  
- .green{
-   color: greenyellow;
+ .details{
+  display: flexbox;
   
- }
+  align-content: flex-end;
+}
+.descriptions{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: right;
+  
+  
+}
+.box{
+  width: 250px;
+  border: 2px solid black;
+  
+
+}
 
 
  /* colors  */
- 042A2B
+ /* 042A2B
  5EB1BF
  CDEDF6
  EF7B45
- D84727
+ D84727 */
  
-
-
 
 
 

@@ -24,6 +24,8 @@
         </form>
     </div>
     
+     
+
     <hr>
     
     <div class="tableHeaders">
@@ -42,7 +44,7 @@
             
             <% //Should have a check box to potentially hide all stocks where last close is higher%>
             
-            <table class=" table-bordered smtable my-custom-scrollbar table-wrapper-scroll-y ">
+            <table class="w3row table-bordered smtable my-custom-scrollbar table-wrapper-scroll-y ">
                             
                             
                             
@@ -58,11 +60,11 @@
 
                 <% stocks.forEach(function(stock) { %>
                     <% //if(stock.lastClose < num ){%>
-                        <div class="smrow col-sm">
+                        
                             <%if(stock.twentyDayBreakout == true || stock.seventyDayBreakout ==true){%>
                                 
                                 <tr class="green">
-                                    <td class="col-sm"><p><u><%= (stock.ticker) %></u></p></td>
+                                    <th><u><a href="/symbols/details/<%=stock.ticker%>"><%= (stock.ticker) %></a></u></th>
                                     <td class="col-sm"><p><u><%= (stock.twentyDayBreakout) %></u></p></td>
                                     <td class="col-sm"><p><u><%= (stock.seventyDayBreakout) %></u></p></td>
                                     
@@ -75,9 +77,9 @@
                                 <%}else{%>
                                     <tr>
                                         
-                                        <td><p></p><%= (stock.ticker) %></p></td>
-                                        <td><p></p><%= (stock.twentyDayBreakout) %></p></td>
-                                        <td><p></p><%= (stock.seventyDayBreakout) %></p></td>
+                                        <th><a href="/symbols/details/<%=stock.ticker%>"><%= (stock.ticker) %></a></th>
+                                        <td><%= (stock.twentyDayBreakout) %></td>
+                                        <td><%= (stock.seventyDayBreakout) %></td>
                                         
                                         <td><form action="/symbols/<%=stock.ticker%>?_method=DELETE" method="POST">
                                             <button type="submit" name="ticker" value="<%=stock.ticker%>">❌</button>
@@ -100,7 +102,7 @@
             </table>
         </div>   
             
-            <table class="  table-bordered bigtable my-custom-scrollbar table-wrapper-scroll-y table-sm">
+            <table class=" w3row table-bordered bigtable my-custom-scrollbar table-wrapper-scroll-y ">
                 
                 
                 
@@ -128,7 +130,7 @@
                                             
                                                 <tr class="green">
                                                     
-                                                    <th><u><%= (stock.ticker) %></u></th>
+                                                    <th><u><a href="/symbols/details/<%=stock.ticker%>"><%= (stock.ticker) %></a></u></th>
                                                     <td><u><%= (stock.rollingAvg) %></u></td>
                                                     <td><u><%= (stock.lastClose) %></u></td> 
                                                     <td><u><%= (stock.date.toLocaleString()) %></u></td>
@@ -152,7 +154,7 @@
 
      <% // WSB TABLE %>
      
-     <table class="wsbTable w3row table-bordered bigtable my-custom-scrollbar table-wrapper-scroll-y table-sm">
+     <table class="wsbTable w3row table-bordered  my-custom-scrollbar table-wrapper-scroll-y table-sm">
                
          
          <thead>
@@ -178,7 +180,7 @@
                                     
                                     <tr class="wsbrows">
                                         
-                                        <th><u><%= (wsbitem.ticker) %></u></th>
+                                        <th><u><a href="/symbols/details/<%=wsbitem.ticker%>"><%= (wsbitem.ticker) %></a></u></th>
                                         <td><u><%= (wsbitem.sentiment) %></u></td>
                                         <td><u><%= (wsbitem.sentiment_score) %></u></td> 
                                         <td><u><%= (wsbitem.updatedAt.toLocaleString()) %></u></td> 
@@ -188,7 +190,7 @@
                             <% } else{ %>
                                 <tr class="wsbrows">
                                             
-                                    <th><%= (wsbitem.ticker) %></th>
+                                    <th><a href="/symbols/details/<%=wsbitem.ticker%>"><%= (wsbitem.ticker) %></a></th>
                                     <td><%= (wsbitem.sentiment) %></td>
                                     <td><%= (wsbitem.sentiment_score) %></td> 
                                     <td><%= (wsbitem.updatedAt.toLocaleString()) %></td> 
@@ -205,8 +207,15 @@
                     
     </table>  
     </div>   
-          
-                
+          <br>
+    <div class="descriptions">
+        <p class="box">This table contains all the stocks in the first two columns, and looks at the 20 day breakout and 70 day breakouts. The breakouts are checked by the last close. If the last close is higher than any others in the last 20 days, or 70 days (a value of true), then the stock is expected to increase in value.</p>
+
+        <p class="box">This table is a filtered version of the last one. This contains only the stocks where the average of the last 20 days is higher than the last close. The idea is that if the average over the previous month was at a certain level, the value should move back towards that same level. This is not always true of course.</p>
+
+        <p class="box">This table if from the API Reddit WallStreet Bets. It shows the ratings of each stock and the directions people think that it will go. Bullish for thinking it will go up 📈, and Bearish thinking it will go down 📉</p>
+
+    </div>       
            
                 
                

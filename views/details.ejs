@@ -1,0 +1,62 @@
+<a href="/">Home</a>
+
+<div class="container-fluid table centered details table-wrapper-scroll-y table-striped table-bordered table-hover table-striped">
+
+
+
+
+
+
+
+
+<table>
+    <thead>
+        <th>
+            Date:
+        </th>
+        <th>
+            Open:
+        </th>
+        <th>
+            High:
+        </th>
+        <th>
+            Low:
+        </th>
+        <th>
+            Close
+        </th>
+
+    </thead>
+    <tbody>
+        <% details.forEach(function(detail) { %>
+        <tr>
+        <td>
+            <%= detail.Timestamp %>
+        </td>
+        <td>
+            <%= detail.OpenPrice %>
+        </td>
+        <td>
+            <%= detail.HighPrice %>
+        </td>
+        <td>
+            <%= detail.LowPrice %>
+        </td>
+        <td>
+            <%= detail.ClosePrice %>
+        </td>
+        </tr>
+
+
+
+
+        <% }) %>
+    </tbody>
+
+
+
+
+
+</table>
+</div>

@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   details.init({
     ticker: DataTypes.STRING,
     date: DataTypes.DATE,
+    open: DataTypes.FLOAT,
     high: DataTypes.FLOAT,
     low: DataTypes.FLOAT,
     close: DataTypes.FLOAT

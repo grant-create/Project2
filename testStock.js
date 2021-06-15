@@ -16,10 +16,10 @@ const alpaca = new Alpaca({keyId:alpApiKey, secretKey:alpSecretKey, paper: true,
 
  
 // 224 THAT ARE LESS THAN $100
-listOfStocks = ['ATVI', 'AMD', 'AES', 'AFL', 'ALK', 'LNT', 'MO', 'AMCR', 'AEE', 'AAL', 'AEP', 'AIG', 'APH', 'AOS', 'APA', 'ADM', 'T', 'BKR', 'BLL', 'BAC', 'BK', 'BAX', 'BWA', 'BSX', 'BMY', 'COG', 'CPB', 'CAH', 'CCL', 'CARR', 'CBRE', 'CNC', 'CNP', 'CERN', 'CF', 'SCHW', 'CHD', 'CSCO', 'C', 'CFG', 'CMS', 'KO', 'CTSH', 'CL', 'CMCSA', 'CMA', 'CAG', 'COP', 'ED', 'GLW', 'CTVA', 'CSX', 'CVS', 'DHI', 'DAL', 'XRAY', 'DVN', 'FANG', 'DISCA', 'DISCK', 'DISH', 'D', 'DOW', 'DRE', 'DD', 'DXC', 'EBAY', 'EIX', 'EW', 'EMR', 'EOG', 'EQR', 'EVRG', 'ES', 'EXC', 'XOM', 'FAST', 'FITB', 'FE', 'F', 'FTV', 'FBHS', 'FOXA', 'FOX', 'BEN', 'FCX', 'GPS', 'GE', 'GIS', 'GM', 'GILD', 'HAL', 'HBI', 'HIG', 'HAS', 'PEAK', 'HSIC', 'HES', 'HPE', 'HOLX', 'HRL', 'HST', 'HWM', 'HPQ', 'HBAN', 'INCY', 'IR', 'INTC', 'IP', 'IPG', 'IVZ', 'IRM', 'JCI', 'JNPR', 'K', 'KEY', 'KIM', 'KMI', 'KHC', 'KR', 'LB', 'LW', 'LVS', 'LEG', 'LEN', 'LNC', 'LYV', 'LKQ', 'L', 'LUMN', 'MRO', 'MPC', 'MAS', 'MKC', 'MRK', 'MET', 'MGM', 'MU', 'TAP', 'MDLZ', 'MNST', 'MS', 'MOS', 'NTAP', 'NWL', 'NEM', 'NWSA', 'NWS', 'NEE', 'NLSN', 'NI', 'NLOK', 'NCLH', 'NOV', 'NRG', 'OXY', 'OMC', 'OKE', 'ORCL', 'OGN', 'OTIS', 'PCAR', 'PENN', 'PNR', 'PBCT', 'PRGO', 'PFE', 'PM', 'PSX', 'PNW', 'PPL', 'PFG', 'PGR', 'PEG', 'PHM', 'PWR', 'RTX', 'O', 'REG', 'RF', 'RHI', 'ROL', 'RCL', 'SLB', 'STX', 'SEE', 'SO', 'LUV', 'STT', 'SYF', 'SYY', 'TPR', 'TXT', 'TJX', 'TRMB', 'TFC', 'TWTR', 'TSN', 'UDR', 'USB', 'UAA', 'UA', 'UAL', 'UNM', 'VLO', 'VTR', 'VZ', 'VFC', 'VIAC', 'VTRS', 'VNO', 'WRB', 'WAB', 'WBA', 'WEC', 'WFC', 'WELL', 'WDC', 'WU', 'WRK', 'WY', 'WMB', 'XEL', 'ZION']
+// listOfStocks = ['ATVI', 'AMD', 'AES', 'AFL', 'ALK', 'LNT', 'MO', 'AMCR', 'AEE', 'AAL', 'AEP', 'AIG', 'APH', 'AOS', 'APA', 'ADM', 'T', 'BKR', 'BLL', 'BAC', 'BK', 'BAX', 'BWA', 'BSX', 'BMY', 'COG', 'CPB', 'CAH', 'CCL', 'CARR', 'CBRE', 'CNC', 'CNP', 'CERN', 'CF', 'SCHW', 'CHD', 'CSCO', 'C', 'CFG', 'CMS', 'KO', 'CTSH', 'CL', 'CMCSA', 'CMA', 'CAG', 'COP', 'ED', 'GLW', 'CTVA', 'CSX', 'CVS', 'DHI', 'DAL', 'XRAY', 'DVN', 'FANG', 'DISCA', 'DISCK', 'DISH', 'D', 'DOW', 'DRE', 'DD', 'DXC', 'EBAY', 'EIX', 'EW', 'EMR', 'EOG', 'EQR', 'EVRG', 'ES', 'EXC', 'XOM', 'FAST', 'FITB', 'FE', 'F', 'FTV', 'FBHS', 'FOXA', 'FOX', 'BEN', 'FCX', 'GPS', 'GE', 'GIS', 'GM', 'GILD', 'HAL', 'HBI', 'HIG', 'HAS', 'PEAK', 'HSIC', 'HES', 'HPE', 'HOLX', 'HRL', 'HST', 'HWM', 'HPQ', 'HBAN', 'INCY', 'IR', 'INTC', 'IP', 'IPG', 'IVZ', 'IRM', 'JCI', 'JNPR', 'K', 'KEY', 'KIM', 'KMI', 'KHC', 'KR', 'LB', 'LW', 'LVS', 'LEG', 'LEN', 'LNC', 'LYV', 'LKQ', 'L', 'LUMN', 'MRO', 'MPC', 'MAS', 'MKC', 'MRK', 'MET', 'MGM', 'MU', 'TAP', 'MDLZ', 'MNST', 'MS', 'MOS', 'NTAP', 'NWL', 'NEM', 'NWSA', 'NWS', 'NEE', 'NLSN', 'NI', 'NLOK', 'NCLH', 'NOV', 'NRG', 'OXY', 'OMC', 'OKE', 'ORCL', 'OGN', 'OTIS', 'PCAR', 'PENN', 'PNR', 'PBCT', 'PRGO', 'PFE', 'PM', 'PSX', 'PNW', 'PPL', 'PFG', 'PGR', 'PEG', 'PHM', 'PWR', 'RTX', 'O', 'REG', 'RF', 'RHI', 'ROL', 'RCL', 'SLB', 'STX', 'SEE', 'SO', 'LUV', 'STT', 'SYF', 'SYY', 'TPR', 'TXT', 'TJX', 'TRMB', 'TFC', 'TWTR', 'TSN', 'UDR', 'USB', 'UAA', 'UA', 'UAL', 'UNM', 'VLO', 'VTR', 'VZ', 'VFC', 'VIAC', 'VTRS', 'VNO', 'WRB', 'WAB', 'WBA', 'WEC', 'WFC', 'WELL', 'WDC', 'WU', 'WRK', 'WY', 'WMB', 'XEL', 'ZION']
 
 // SHORTER LIST
-// listOfStocks = ['SPY', 'QQQ', 'DIA', 'MMM', 'ABT', 'ABBV', 'ABMD', 'ACN', 'ATVI', 'ADBE', 'AMD', 'AAP', 'AES', 'AFL', 'A', 'APD', 'AKAM', 'ALK', 'ALB']
+listOfStocks = ['SPY', 'QQQ', 'DIA', 'MMM', 'ABT', 'ABBV', 'ABMD', 'ACN', 'ATVI', 'ADBE', 'AMD', 'AAP', 'AES', 'AFL', 'A', 'APD', 'AKAM', 'ALK', 'ALB']
 //  listOfStocks = ['SPY', 'QQQ', 'DIA']
 
 
@@ -200,7 +200,7 @@ listOfStocks = ['ATVI', 'AMD', 'AES', 'AFL', 'ALK', 'LNT', 'MO', 'AMCR', 'AEE', 
 
 
 }
-// getInfo()
+getInfo()
 
 // db.stocks.sync({alter:true})
 
@@ -216,7 +216,7 @@ listOfStocks = ['ATVI', 'AMD', 'AES', 'AFL', 'ALK', 'LNT', 'MO', 'AMCR', 'AEE', 
 //   })
 
 
-// // // Going back 21 days
+// // // Going back 21 days 
 // // var d = new Date();
 // // console.log(d.toLocaleString())
 // // console.log(d)
@@ -269,38 +269,28 @@ listOfStocks = ['ATVI', 'AMD', 'AES', 'AFL', 'ALK', 'LNT', 'MO', 'AMCR', 'AEE', 
 
 
 
+async function getDetails(stock){
+   
 
-        async function test() {
-
-      
-            // https://alpaca.markets/docs/api-documentation/how-to/market-data/
-            let barsTwe = alpaca.getBarsV2(
-                "AAPL",
-                {
-                    start: moment().subtract(4, "days").format(),
-                    end: moment().subtract(1, "days").format(),
-                    timeframe: "1Day",
-                },
-                alpaca.configuration
-                );
-                // console.log(JSON.stringify(bars))
-                 const barsetTwe = []
-                let twentyDayBreakout =false
-                for await (let b of barsTwe) {
-                    barsetTwe.push(b); 
-                    console.log(b)  
-                } 
-                // console.log(barsetTwe)
-
-                lastClose = barsetTwe[barsetTwe.length - 1]
-               
-                // console.log(Math.max(...barsetTwe))
-
-                // console.log(lastClose, '🎈🎈🎈',  Math.max(...barsetTwe))
-
-                if(lastClose>= Math.max(...barsetTwe)){
-                    twentyDayBreakout = true
-
-                }
+        
+        // https://alpaca.markets/docs/api-documentation/how-to/market-data/
+        let bars = alpaca.getBarsV2(
+            stock,
+            {
+                start: moment().subtract(30, "days").format(),
+                end: moment().subtract(1, "days").format(),
+                timeframe: "1Day",
+            },
+            alpaca.configuration
+            );
+            // console.log(JSON.stringify(bars))
+            const barset = []
+            let tDayBreakout =false
+            for await (let b of bars) {
+                barset.push(b);   
             } 
-            test()
+            console.log(barset[0].Timestamp.toLocaleString())
+            return barset
+        }
+        
+        // getDetails("AAPL")

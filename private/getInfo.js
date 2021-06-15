@@ -27,7 +27,7 @@ const alpaca = new Alpaca({keyId:alpApiKey, secretKey:alpSecretKey, paper: true,
         let bars = alpaca.getBarsV2(
             stock,
             {
-                start: moment().subtract(30, "days").format(),
+                start: moment().subtract(28, "days").format(),
                 end: moment().subtract(1, "days").format(),
                 timeframe: "1Day",
             },
@@ -172,6 +172,37 @@ async function getSeventyBreakout(stock){
 
 
 
+// DETAILS:
+
+async function getDetails(stock){
+  
+
+        
+        // https://alpaca.markets/docs/api-documentation/how-to/market-data/
+        let bars = alpaca.getBarsV2(
+            stock,
+            {
+                start: moment().subtract(70, "days").format(),
+                end: moment().subtract(1, "days").format(),
+                timeframe: "1Day",
+            },
+            alpaca.configuration
+            );
+            // console.log(JSON.stringify(bars))
+            const barset = []
+            let tDayBreakout =false
+            for await (let b of bars) {
+                barset.push(b);   
+            } 
+            return barset
+        }
+        
+
+
+
+
+
+
 
 
 
@@ -199,4 +230,4 @@ async function getSeventyBreakout(stock){
 
 
 
-module.exports= {getRollingAvg, getLastClose, getTwentyBreakout, getSeventyBreakout}
+module.exports= {getRollingAvg, getLastClose, getTwentyBreakout, getSeventyBreakout, getDetails}

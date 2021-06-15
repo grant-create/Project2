@@ -19,7 +19,9 @@ const alpaca = new Alpaca({keyId:alpApiKey, secretKey:alpSecretKey, paper: true,
 
 
 // Getting functions from private folder/getInfo.js
-const getInfo = require('../private/getInfo.js')
+const getInfo = require('../private/getInfo.js');
+const { route } = require('./profile');
+const details = require('../models/details');
 
 // getInfo.function()
 
@@ -149,7 +151,7 @@ db.wsb.destroy({
   let wsbUrl = 'https://dashboard.nbshare.io/api/v1/apps/reddit'
     
     let wsbRes = await axios.get(wsbUrl)
-      for (item of wsbRes.data){
+      for (item of wsbRes.data){ 
 
             // console.log(item.sentiment, item.ticker)
         
@@ -242,6 +244,42 @@ router.get('/number', async (req,res) =>{
     res.render("index", {stocks:foundstocks, wsb:wsbData})
   })
 })
+
+
+
+
+
+
+// Route to Details page
+
+router.get('/details/:ticker', async (req,res) => {
+  let stockDetails = req.params.ticker
+  
+  // res.send(stockDetails)
+  let details = await getInfo.getDetails(stockDetails) 
+    try {
+      db.details.findOrCreate({
+          
+        where: {
+          
+          ticker: stockDetails
+          
+        }
+      
+     
+      
+      // the findOrCreate promise returns an array with two elements,
+      // so 'array destructuring' is used to assign the names to the elements
+      
+      })
+    }catch(error) {
+      console.log(error)
+    }
+    res.render("details", {details:details})
+  
+})
+
+
 
 
 

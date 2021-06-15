@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.stocks.hasOne(models.wsb, {foreignKey: 'ticker', targetKey: 'ticker'})
+      models.stocks.hasOne(models.details)
     }
   };
   stocks.init({
