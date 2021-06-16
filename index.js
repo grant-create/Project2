@@ -14,13 +14,13 @@ const moment = require("moment");
 const Alpaca = require("@alpacahq/alpaca-trade-api");
 const alpaca = new Alpaca({keyId:alpApiKey, secretKey:alpSecretKey, paper: true, usePolygon: false})
 
-const PORT = 3000
+
 
 
 
 
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 rowdy.begin(app)
 
@@ -82,6 +82,6 @@ app.use('/profile', require('./routes/profile.js'));
 
 
 app.listen(PORT, () => {
-    console.log("Welcome to PORT 3000")
+    console.log(`Welcome to Port ${PORT}`)
 })
 
