@@ -123,8 +123,8 @@ listOfStocks = ['SPY', 'QQQ', 'DIA', 'MMM', 'ABT', 'ABBV', 'ABMD', 'ACN', 'ATVI'
 }
 
 // const db = require('./models')
-// db.stocks.sync({ force: true}).then(()=>process.exit)
-// db.details.sync({ force: true}).then(()=>process.exit)
+db.stocks.sync({ force: true}).then(()=>process.exit)
+db.details.sync({ force: true}).then(()=>process.exit)
 db.wsb.sync({ force: true}).then(()=>process.exit)
 
 
