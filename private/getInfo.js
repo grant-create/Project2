@@ -146,7 +146,7 @@ async function getSeventyBreakout(stock){
         let bars = alpaca.getBarsV2(
             stock,
             {
-                start: moment().subtract(98, "days").format(),
+                start: moment().subtract(70, "days").format(),
                 end: moment().subtract(1, "days").format(),
                 timeframe: "1Day",
             },

@@ -18,8 +18,13 @@ const alpaca = new Alpaca({keyId:alpApiKey, secretKey:alpSecretKey, paper: true,
 // 224 THAT ARE LESS THAN $100
 // listOfStocks = ['ATVI', 'AMD', 'AES', 'AFL', 'ALK', 'LNT', 'MO', 'AMCR', 'AEE', 'AAL', 'AEP', 'AIG', 'APH', 'AOS', 'APA', 'ADM', 'T', 'BKR', 'BLL', 'BAC', 'BK', 'BAX', 'BWA', 'BSX', 'BMY', 'COG', 'CPB', 'CAH', 'CCL', 'CARR', 'CBRE', 'CNC', 'CNP', 'CERN', 'CF', 'SCHW', 'CHD', 'CSCO', 'C', 'CFG', 'CMS', 'KO', 'CTSH', 'CL', 'CMCSA', 'CMA', 'CAG', 'COP', 'ED', 'GLW', 'CTVA', 'CSX', 'CVS', 'DHI', 'DAL', 'XRAY', 'DVN', 'FANG', 'DISCA', 'DISCK', 'DISH', 'D', 'DOW', 'DRE', 'DD', 'DXC', 'EBAY', 'EIX', 'EW', 'EMR', 'EOG', 'EQR', 'EVRG', 'ES', 'EXC', 'XOM', 'FAST', 'FITB', 'FE', 'F', 'FTV', 'FBHS', 'FOXA', 'FOX', 'BEN', 'FCX', 'GPS', 'GE', 'GIS', 'GM', 'GILD', 'HAL', 'HBI', 'HIG', 'HAS', 'PEAK', 'HSIC', 'HES', 'HPE', 'HOLX', 'HRL', 'HST', 'HWM', 'HPQ', 'HBAN', 'INCY', 'IR', 'INTC', 'IP', 'IPG', 'IVZ', 'IRM', 'JCI', 'JNPR', 'K', 'KEY', 'KIM', 'KMI', 'KHC', 'KR', 'LB', 'LW', 'LVS', 'LEG', 'LEN', 'LNC', 'LYV', 'LKQ', 'L', 'LUMN', 'MRO', 'MPC', 'MAS', 'MKC', 'MRK', 'MET', 'MGM', 'MU', 'TAP', 'MDLZ', 'MNST', 'MS', 'MOS', 'NTAP', 'NWL', 'NEM', 'NWSA', 'NWS', 'NEE', 'NLSN', 'NI', 'NLOK', 'NCLH', 'NOV', 'NRG', 'OXY', 'OMC', 'OKE', 'ORCL', 'OGN', 'OTIS', 'PCAR', 'PENN', 'PNR', 'PBCT', 'PRGO', 'PFE', 'PM', 'PSX', 'PNW', 'PPL', 'PFG', 'PGR', 'PEG', 'PHM', 'PWR', 'RTX', 'O', 'REG', 'RF', 'RHI', 'ROL', 'RCL', 'SLB', 'STX', 'SEE', 'SO', 'LUV', 'STT', 'SYF', 'SYY', 'TPR', 'TXT', 'TJX', 'TRMB', 'TFC', 'TWTR', 'TSN', 'UDR', 'USB', 'UAA', 'UA', 'UAL', 'UNM', 'VLO', 'VTR', 'VZ', 'VFC', 'VIAC', 'VTRS', 'VNO', 'WRB', 'WAB', 'WBA', 'WEC', 'WFC', 'WELL', 'WDC', 'WU', 'WRK', 'WY', 'WMB', 'XEL', 'ZION']
 
+// 174 THAT ARE LESS THAN $80
+// listOfStocks = ['AES', 'AFL', 'ALK', 'LNT', 'MO', 'AMCR', 'AAL', 'AIG', 'APH', 'AOS', 'APA', 'ADM', 'T', 'BKR', 'BAC', 'BK', 'BWA', 'BSX', 'BMY', 'COG', 'CPB', 'CAH', 'CCL', 'CARR', 'CNC', 'CNP', 'CF', 'SCHW', 'CSCO', 'C', 'CFG', 'CMS', 'KO', 'CTSH', 'CMCSA', 'CMA', 'CAG', 'COP', 'ED', 'GLW', 'CTVA', 'DAL', 'XRAY', 'DVN', 'DISCA', 'DISCK', 'DISH', 'D', 'DOW', 'DRE', 'DXC', 'EBAY', 'EIX', 'EVRG', 'EXC', 'XOM', 'FAST', 'FITB', 'FE', 'F', 'FTV', 'FOXA', 'FOX', 'BEN', 'FCX', 'GPS', 'GE', 'GIS', 'GM', 'GILD', 'HAL', 'HBI', 'HIG', 'PEAK', 'HSIC', 'HPE', 'HOLX', 'HRL', 'HST', 'HWM', 'HPQ', 'HBAN', 'IR', 'INTC', 'IP', 'IPG', 'IVZ', 'IRM', 'JCI', 'JNPR', 'K', 'KEY', 'KIM', 'KMI', 'KHC', 'KR', 'LB', 'LVS', 'LEG', 'LNC', 'LKQ', 'L', 'LUMN', 'MRO', 'MPC', 'MAS', 'MRK', 'MET', 'MGM', 'TAP', 'MDLZ', 'MOS', 'NWL', 'NEM', 'NWSA', 'NWS', 'NEE', 'NLSN', 'NI', 'NLOK', 'NCLH', 'NOV', 'NRG', 'OXY', 'OKE', 'OGN', 'PNR', 'PBCT', 'PRGO', 'PFE', 'PPL', 'PFG', 'PEG', 'PHM', 'O', 'REG', 'RF', 'ROL', 'SLB', 'SEE', 'SO', 'LUV', 'SYF', 'SYY', 'TPR', 'TXT', 'TJX', 'TRMB', 'TFC', 'TWTR', 'TSN', 'UDR', 'USB', 'UAA', 'UA', 'UAL', 'UNM', 'VTR', 'VZ', 'VIAC', 'VTRS', 'VNO', 'WRB', 'WBA', 'WFC', 'WDC', 'WU', 'WRK', 'WY', 'WMB', 'XEL', 'ZION']
+
+
+
 // SHORTER LIST
-listOfStocks = ['SPY', 'QQQ', 'DIA', 'MMM', 'ABT', 'ABBV', 'ABMD', 'ACN', 'ATVI', 'ADBE', 'AMD', 'AAP', 'AES', 'AFL', 'A', 'APD', 'AKAM', 'ALK', 'ALB']
+listOfStocks = ['SPY', 'QQQ', 'DIA', 'MMM', 'ABT', 'ABBV', 'ABMD', 'ACN', 'ATVI', 'ADBE', 'AMD', 'AAP', 'AES', 'AFL', 'A', 'APD', 'AKAM', 'ALK', 'ALB','LUV', 'SYF', 'SYY', 'TPR', 'TXT', 'TJX', 'TRMB', 'TFC', 'TWTR', 'TSN', 'UDR', 'USB', 'UAA', 'UA', 'UAL', 'UNM']
 //  listOfStocks = ['SPY', 'QQQ', 'DIA']
 
 
@@ -91,90 +96,6 @@ listOfStocks = ['SPY', 'QQQ', 'DIA', 'MMM', 'ABT', 'ABBV', 'ABMD', 'ACN', 'ATVI'
         var d = new Date();
         let todayDate = (d.toLocaleString())
        
-
-
-
-
-
-
-        
-// 20 DAY BREAKOUT
-
-
-       
-
-            
-            // // https://alpaca.markets/docs/api-documentation/how-to/market-data/
-            // let barsTwe = alpaca.getBarsV2(
-            //     stock,
-            //     {
-            //         start: moment().subtract(28, "days").format(),
-            //         end: moment().subtract(1, "days").format(),
-            //         timeframe: "1Day",
-            //     },
-            //     alpaca.configuration
-            //     );
-            //     // console.log(JSON.stringify(bars))
-            //      const barsetTwe = []
-            //     let twentyDayBreakout =false
-            //     // for await (let b of barsTwe) {
-            //     //     barsetTwe.push(b);   
-            //     // } 
-            //     // console.log(barsetTwe.length)
-            //     lastClose = barsetTwe[barsetTwe.length - 1].ClosePrice
-            //     if(lastClose>= Math.max(barsTwe)){
-            //         twentyDayBreakout = true
-            //     }
-                
-                 
-            
-            
-
-
-
-            // // 70 Day Breakout
-
-            
-       
-
-            
-            // // https://alpaca.markets/docs/api-documentation/how-to/market-data/
-            // let barsSev = alpaca.getBarsV2(
-            //     stock,
-            //     {
-            //         start: moment().subtract(98, "days").format(),
-            //         end: moment().subtract(1, "days").format(),
-            //         timeframe: "1Day",
-            //     },
-            //     alpaca.configuration
-            //     );
-            //     // console.log(JSON.stringify(bars))
-            //     const barsetSev = []
-            //     let seventyDayBreakout =false
-            //     // for await (let b of barsSev) {
-            //     //     barsetSev.push(b);   
-            //     // } 
-            //     // console.log(barset.length)
-            //     lastClose = barsetSev[barsetSev.length - 1].ClosePrice
-            //     if(lastClose>= Math.max(barsSev)){
-            //         seventyDayBreakout = true
-            //     }
-                
-                
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         //Creating the base stock list
@@ -290,6 +211,7 @@ async function getDetails(stock){
                 barset.push(b);   
             } 
             console.log(barset[0].Timestamp.toLocaleString())
+            console.log(barset)
             return barset
         }
         

@@ -1,30 +1,43 @@
 
+
+
+
+
 <div class="container-fluid">
+    <div class="forcolor">
 
-    <h2>Stock List with 20 Day Rolling AVG</h2>
-    <br><br>
-    <div class="forms">
-
-        
-        <form id="addBtn" method="POST" action="/symbols">
-            <input type="text" name="name" value="<%= stocks.ticker %>">
-            <button class="btn btn-primary" type="submit"  >Add to All Stocks List</button>
-        </form>
-        <br>
-        <form id="updateBtn" method="POST" action="/symbols?_method=PUT">
-            <input hidden type="text" name="name" value="<%= stocks.ticker %>">
-            <button type="submit">Update All Table Data 📈💹</button>
-        </form>
-        <br>
-        
-        <form id="filterBtn" method="GET" action="/symbols/number">
-            <label for="number">Filter by price</label> <br>
-            <input type="number" name="number" value=""> 
-            <button class="btn btn-primary" type="submit"  >Go</button>
-        </form>
-    </div>
     
-     
+        
+        <br><br>
+        <div class="forms">
+
+            
+            <form id="addBtn" method="POST" action="/symbols">
+                <input type="text" name="name" value="<%= stocks.ticker %>">
+                <button class="btn btn-primary" type="submit"  >Add to All Stocks List</button>
+            </form>
+            <br>
+
+
+
+            <form id="updateBtn" method="POST" action="/symbols?_method=PUT">
+                <label for="submit" id="buttonid"  ></label> <br>
+                <input hidden type="text" name="name" value="<%= stocks.ticker %>">
+                <button class="btn btn-success" id="submitbutton" type="submit">Update All Table Data 📈</button>
+            </form>
+
+
+
+            <br>
+            
+            <form id="filterBtn" method="GET" action="/symbols/number">
+                <label id="filterText" for="number">Filter by max price willing to pay per share</label> <br>
+                <input type="number" name="number" value="" placeholder=""> 
+                <button class="btn btn-primary" type="submit"  >Go</button>
+            </form>
+        </div>
+    
+    </div>
 
     <hr>
     
@@ -35,16 +48,16 @@
     </div>
 
 
-    <div class=" w3row bothtables"><% //div for all tables %>
-        <div class=w3column>
+    <div class=" w3row bothtables "><% //div for all tables %>
+        <div class="w3column">
 
 
            
             
             
-            <% //Should have a check box to potentially hide all stocks where last close is higher%>
             
-            <table class="w3row table-bordered smtable my-custom-scrollbar table-wrapper-scroll-y ">
+            
+            <table class="w3row table-bordered smtable my-custom-scrollbar table-wrapper-scroll-y tableone">
                             
                             
                             
@@ -59,9 +72,9 @@
 
 
                 <% stocks.forEach(function(stock) { %>
-                    <% //if(stock.lastClose < num ){%>
+                    
                         
-                            <%if(stock.twentyDayBreakout == true || stock.seventyDayBreakout ==true){%>
+                    <% if(stock.twentyDayBreakout == true || stock.seventyDayBreakout ==true) { %>
                                 
                                 <tr class="green">
                                     <th><u><a href="/symbols/details/<%=stock.ticker%>"><%= (stock.ticker) %></a></u></th>
@@ -74,7 +87,7 @@
                                 </tr>
                                 
                                 
-                                <%}else{%>
+                                <% }else{%>
                                     <tr>
                                         
                                         <th><a href="/symbols/details/<%=stock.ticker%>"><%= (stock.ticker) %></a></th>
@@ -90,7 +103,7 @@
                                 
                                 <%//}%>
                                 
-                                <%})%>
+                <% }) %>
                                 
                                 
                             
@@ -102,17 +115,17 @@
             </table>
         </div>   
             
-            <table class=" w3row table-bordered bigtable my-custom-scrollbar table-wrapper-scroll-y ">
+            <table class=" w3row table-bordered bigtable my-custom-scrollbar table-wrapper-scroll-y tabletwo">
                 
                 
                 
                                 
                 <thead>
                     
-                    <th scope="col"><p>Stock</p></th>
-                                    <th scope="col"><p>Rolling Avg</p></th>
-                                    <th scope="col"><p>Last Close</p></th>
-                                    <th scope="col"><p>Date Run</p></th>
+                    <th scope="col">Stock</th>
+                                    <th scope="col">Rolling Avg</th>
+                                    <th scope="col">Last Close</th>
+                                    <th scope="col">Date Run</th>
                                    
                                     
                                     
@@ -154,16 +167,16 @@
 
      <% // WSB TABLE %>
      
-     <table class="wsbTable w3row table-bordered  my-custom-scrollbar table-wrapper-scroll-y table-sm">
+     <table class="wsbTable w3row table-bordered  my-custom-scrollbar table-wrapper-scroll-y table-sm tablethree">
                
          
          <thead>
              
              
-             <th scope="col"><p>Ticker</p></th>
-             <th scope="col"><p>Sentiment</p></th>
-             <th scope="col"><p>Sentiment Score</p></th>
-             <th scope="col"><p>Updated At</p></th>
+             <th scope="col">Ticker</th>
+             <th scope="col">Sentiment</th>
+             <th scope="col">Sentiment Score</th>
+             <th scope="col">Updated At</th>
              
             </thead>
             
@@ -183,7 +196,7 @@
                                         <th><u><a href="/symbols/details/<%=wsbitem.ticker%>"><%= (wsbitem.ticker) %></a></u></th>
                                         <td><u><%= (wsbitem.sentiment) %></u></td>
                                         <td><u><%= (wsbitem.sentiment_score) %></u></td> 
-                                        <td><u><%= (wsbitem.updatedAt.toLocaleString()) %></u></td> 
+                                        <td><%= (wsbitem.updatedAt.toLocaleString()) %></td> 
                                         
                                     </tr>
                                 
@@ -208,27 +221,36 @@
     </table>  
     </div>   
           <br>
-    <div class="descriptions">
+    <div class="descriptions  justify-content-center">
         <p class="box">This table contains all the stocks in the first two columns, and looks at the 20 day breakout and 70 day breakouts. The breakouts are checked by the last close. If the last close is higher than any others in the last 20 days, or 70 days (a value of true), then the stock is expected to increase in value.</p>
 
-        <p class="box">This table is a filtered version of the last one. This contains only the stocks where the average of the last 20 days is higher than the last close. The idea is that if the average over the previous month was at a certain level, the value should move back towards that same level. This is not always true of course.</p>
+        <p class="box">This table is a filtered version of the last one. This contains only the stocks where the average of the last 20 days is higher than the last close. The idea is that if the average over the previous month was at a certain level, the value should move back towards that same level. This is not always true of course, but the S&P500 index, like many others, has an upward bias.</p>
 
         <p class="box">This table if from the API Reddit WallStreet Bets. It shows the ratings of each stock and the directions people think that it will go. Bullish for thinking it will go up 📈, and Bearish thinking it will go down 📉</p>
 
     </div>       
-           
+           <br><br>
                 
-               
-
-
-
-    
-        
-                
-                
-                
-      
-    
-
-    
+ 
 </div>
+
+<script>
+    window.addEventListener("DOMContentLoaded", () =>{
+        let x = document.getElementById("buttonid").innerText = ""
+        let button = document.getElementById("submitbutton")
+
+        button.addEventListener("click", () =>{
+        
+            
+            x.innerText = ""
+        
+    setTimeout(function() { 
+        button.disabled = true
+        document.getElementById("buttonid").innerText = "This might take up to a minute"
+    }, 10)
+    
+    
+    
+    })
+    })
+</script>
