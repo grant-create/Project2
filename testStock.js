@@ -24,8 +24,8 @@ const alpaca = new Alpaca({keyId:alpApiKey, secretKey:alpSecretKey, paper: true,
 
 
 // SHORTER LIST
-// listOfStocks = ['SPY', 'QQQ', 'DIA', 'MMM', 'ABT', 'ABBV', 'ABMD', 'ACN', 'ATVI', 'ADBE', 'AMD', 'AAP', 'AES', 'AFL', 'A','LUV', 'SYF', 'SYY', 'TPR', 'TXT', 'TWTR', 'TSN', 'UDR', 'USB', 'UAA', 'UA', 'UAL', 'UNM']
- listOfStocks = ['SPY', 'QQQ', 'DIA']
+listOfStocks = ['SPY', 'QQQ', 'DIA', 'MMM', 'ABT', 'ABBV', 'ABMD', 'ACN', 'ATVI', 'ADBE', 'AMD', 'AAP', 'AES', 'AFL', 'A','LUV', 'SYF', 'SYY', 'TPR', 'TXT', 'TWTR', 'TSN', 'UDR', 'USB', 'UAA', 'UA', 'UAL', 'UNM']
+//  listOfStocks = ['SPY', 'QQQ', 'DIA']
 
 
   async function getInfo(){
@@ -126,12 +126,12 @@ const alpaca = new Alpaca({keyId:alpApiKey, secretKey:alpSecretKey, paper: true,
 // db.stocks.sync({ force: true})
 // db.details.sync({ force: true}).then(()=>process.exit())
 // db.wsb.sync({ force: true}).then(()=>process.exit)
-db.sequelize.sync({ force: true}).then(()=>process.exit())
+// db.sequelize.sync({ force: true}).then(()=>process.exit())
 
 
 
 
-// getInfo()
+getInfo()
 
 
 
