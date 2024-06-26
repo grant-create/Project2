@@ -42,7 +42,7 @@ In designing and building your project, you will start by forking and cloneing t
 1. Name of your app: S&P500 Rolling AVG
 2. Tech stack you plan to use: Node, Express, HTML, CSS
 3. wireframe:
-     ![image](https://user-images.githubusercontent.com/63885329/121231718-97340700-c845-11eb-8761-854faba5f802.png)
+     
      
 4. API you plan to use: Alpha Vantage API, and maybe the alpaca API
 
