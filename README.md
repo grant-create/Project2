@@ -5,8 +5,6 @@ I found an AlphaVantage API that will work for this. I'm not sure if there is a 
   (test)
  I think I will need help determining what the models will be. Maybe a base list of S&P500, and one for user picks?
  The main table will only show the stock if they are below their rolling average.
- 
- ![image](https://user-images.githubusercontent.com/63885329/121231718-97340700-c845-11eb-8761-854faba5f802.png)
 
 I imagine that I will have trouble with the routes, as that's something I'm still having trouble with in general. Most of the code for processing the data I have already made in a python file, but I'll have to convert it to JS (it's not very complicated though)
 
